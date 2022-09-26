@@ -52,60 +52,36 @@ $linksSidebar = [
                 'url'  => base_url('/proles'),
                 'icon' => 'fas fa-circle',
             ],
+            [
+                'text' => 'Instituciones',
+                'url'  => base_url('/proles'),
+                'icon' => 'bi bi-house-fill',
+            ],
         ],
     ],
     [
         'mode' => 'menu',
-        'text' => 'Productos',
+        'text' => 'Mesa Sufragio',
         'url'  => '/users',
-        'icon' => 'bi bi-shop',
+        'icon' => 'bi bi-list-task',
     ],
     [
         'mode' => 'menu',
-        'text' => 'Charts',
+        'text' => 'Estudiantes',
         'url'  => '/charts',
-        'icon' => 'bi bi-clipboard-data',
-    ],
-    ['header' => 'Apps'],
-    [
-        'mode' => 'submenu',
-        'text'    => 'Categorias',
-        'url'    => '#',
-        'icon' => 'bi bi-tags',
-        'submenu' => [
-            [
-                'text' => 'Crear',
-                'url'  => 'category/create',
-                'icon' => 'fas fa-circle',
-            ],
-            [
-                'text' => 'Editar',
-                'url'  => 'category/edit',
-                'icon' => 'fas fa-circle',
-            ],
-        ],
+        'icon' => 'bi bi-people',
     ],
     [
-        'mode' => 'submenu',
-        'text'    => 'Productos',
-        'url'    => '#',
-        'icon' => 'bi bi-shop',
-        'submenu' => [
-            [
-                'text' => 'Crear',
-                'url'  => 'www.google.com',
-                'icon' => 'fas fa-circle',
-            ],
-            [
-                'text' => 'Editar',
-                'url'  => 'www.google.com',
-                'icon' => 'fas fa-circle',
-            ],
-        ],
+        'mode' => 'menu',
+        'text' => 'Roles Estudiantes',
+        'url'  => '/charts',
+        'icon' => 'bi bi-sliders2-vertical',
     ],
-
     [
-        'header' => 'CLIENTES'
+        'mode' => 'menu',
+        'text' => 'Candidatos',
+        'url'  => '/charts',
+        'icon' => 'bi bi-person-workspace',
     ],
 ];
 
