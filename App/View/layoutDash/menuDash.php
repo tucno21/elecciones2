@@ -49,7 +49,7 @@ $linksSidebar = [
             ],
             [
                 'text' => 'Roles',
-                'url'  => base_url('/proles'),
+                'url'  => route('roles.index'),
                 'icon' => 'fas fa-circle',
             ],
             [
