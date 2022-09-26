@@ -9,7 +9,7 @@ class Permissions extends Model
     /**
      * nombre de la tabla
      */
-    protected static $table       = 'permisos';
+    protected static $table       = 'permissions';
     /**
      * nombre primary key
      */

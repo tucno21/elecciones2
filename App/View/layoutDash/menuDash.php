@@ -43,13 +43,13 @@ $linksSidebar = [
                 'icon' => 'fas fa-circle',
             ],
             [
-                'text' => 'Modulos',
-                'url'  => base_url('/pmodulos'),
+                'text' => 'Roles',
+                'url'  => route('roles.index'),
                 'icon' => 'fas fa-circle',
             ],
             [
-                'text' => 'Roles',
-                'url'  => route('roles.index'),
+                'text' => 'Permisos',
+                'url'  => route('permissions.index'),
                 'icon' => 'fas fa-circle',
             ],
             [
