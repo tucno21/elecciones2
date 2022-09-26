@@ -1,41 +1,21 @@
 <?php
 
 // DATOS GENERALES ADMIN
-$title = 'SB Admin Pro';
+$title = 'Elecciones ' . date('Y');
 $titleShort = 'H';
 $mainLink = base_url('/dashboard');
 $logoAdmin = '../public/logo/logo.png';
 
 //DATOS DEL USUARIO ADMIN
-$userName = session()->user()->name;
+$userName = session()->user()->fullname;
 
 
 
 //MENU CERRAR O PERFIL DE ADMINISTRADOR
 $menuSession = [
     [
-        'text' => 'My Account',
-        'url'  => '#',
-        'icon' => 'bi bi-person-circle',
-    ],
-    [
-        'text' => 'Settings',
-        'url'  => 'dashboard/logs',
-        'icon' => 'bi bi-gear',
-    ],
-    [
-        'text' => 'My Wallet',
-        'url'  => base_url('/logout'),
-        'icon' => 'bi bi-wallet2',
-    ],
-    [
-        'text' => 'Lock Screen',
-        'url'  => '#',
-        'icon' => 'bi bi-shield-lock',
-    ],
-    [
         'text' => 'Logout',
-        'url'  => route('logout'),
+        'url'  => route('login.logout'),
         'icon' => 'bi bi-box-arrow-right',
     ],
 ];

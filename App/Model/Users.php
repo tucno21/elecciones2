@@ -17,7 +17,7 @@ class Users extends Model
     /**
      * nombre de la columnas de la tabla
      */
-    protected static $allowedFields = ['name', 'email', 'password', 'photo', 'estado', 'rango', 'date_access'];
+    protected static $allowedFields = ['fullname', 'email', 'password', 'school_id', 'rol_id', 'status'];
 
     /**
      * obtener los datos de la tabla en 'array' u 'object'
@@ -42,7 +42,7 @@ class Users extends Model
      * puede eliminar si desea estos campos si no lo rquiere
      * si desea que el framework registre las fechas para la creacion o  actualizacion
      */
-    protected static $useTimestamps   = false;
+    protected static $useTimestamps   = true;
     /**
      * $createdField debe ser DATETIME o TIMESTAMPS con condicion null
      * $$updatedField debe ser TIMESTAMPS con condicion null
