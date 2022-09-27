@@ -10,6 +10,18 @@
         <?php endif; ?>
     </div>
 </div>
+<!-- codigo modular -->
+<div class="mb-3">
+    <div class="input-group input-group-sm ">
+        <spam class="input-group-text"><i class="bi bi-123"></i></spam>
+        <input type="number" class="form-control <?= isset($err->codigo_modular) ? 'is-invalid' : '' ?>" name="codigo_modular" placeholder="Codigo Modular" value="<?= isset($data->codigo_modular) ? $data->codigo_modular : '' ?>">
+        <?php if (isset($err->codigo_modular)) : ?>
+            <div class="invalid-feedback">
+                <?= $err->codigo_modular ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
 <!-- Color -->
 <div class="mb-3">
     <p class="p-0 m-0 fw-bold">Color principal IE</p>

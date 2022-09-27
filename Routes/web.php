@@ -7,6 +7,7 @@ use App\Controller\BackView\UserController;
 use App\Controller\BackView\SchoolController;
 use App\Controller\BackView\DashboardController;
 use App\Controller\BackView\PermissionController;
+use App\Controller\BackView\VotingGroupController;
 use App\Controller\BackView\RolesPermissionController;
 
 /**
@@ -61,3 +62,11 @@ Route::get('/users/destroy', [UserController::class, 'destroy'])->name('users.de
 //role y permisos
 Route::get('/roles_permissions', [RolesPermissionController::class, 'edit'])->name('roles.permissions');
 Route::post('/roles_permissions', [RolesPermissionController::class, 'update']);
+
+//votinggroups
+Route::get('/votinggroups', [VotingGroupController::class, 'index'])->name('votinggroups.index');
+Route::get('/votinggroups/create', [VotingGroupController::class, 'create'])->name('votinggroups.create');
+Route::post('/votinggroups/create', [VotingGroupController::class, 'store']);
+Route::get('/votinggroups/edit', [VotingGroupController::class, 'edit'])->name('votinggroups.edit');
+Route::post('/votinggroups/edit', [VotingGroupController::class, 'update']);
+Route::get('/votinggroups/destroy', [VotingGroupController::class, 'destroy'])->name('votinggroups.destroy');

@@ -68,7 +68,7 @@ $linksSidebar = [
     [
         'mode' => 'menu',
         'text' => 'Mesa Sufragio',
-        'url'  => '/users',
+        'url'  => route('votinggroups.index'),
         'icon' => 'bi bi-list-task',
     ],
     [

@@ -2,22 +2,17 @@
 <main>
     <!-- Main page content-->
     <div class="container-xl px-4">
-        <h2 class="mt-2 mb-0">Editar Institución</h2>
+        <h2 class="mt-2 mb-0">Editar Mesa de Votación</h2>
         <hr class="mt-0 mb-4" />
 
 
 
         <div class="mx-auto card w-75">
             <div class="card-header">
-                <?php if (session()->user()->id === 1) : ?>
-                    <a class="btn btn-outline-dark btn-sm" href="<?= route('votinggroups.index') ?>">Volver</a>
-                <?php else : ?>
-                    <a class="btn btn-outline-dark btn-sm" href="<?= route('schools.myschool') ?>">Volver</a>
-                <?php endif; ?>
-
+                <a class="btn btn-outline-dark btn-sm" href="<?= route('votinggroups.index') ?>">Volver</a>
             </div>
 
-            <form action="<?= route('schools.edit') ?>" method="POST" enctype="multipart/form-data">
+            <form action="<?= route('votinggroups.edit') ?>" method="POST">
                 <?= csrf() ?>
 
                 <div class="card-body">

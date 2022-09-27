@@ -4,12 +4,12 @@ namespace App\Model;
 
 use System\Model;
 
-class Schools extends Model
+class VotingGroups extends Model
 {
     /**
      * nombre de la tabla
      */
-    protected static $table       = 'schools';
+    protected static $table       = 'votinggroups';
     /**
      * nombre primary key
      */
@@ -17,7 +17,7 @@ class Schools extends Model
     /**
      * nombre de la columnas de la tabla
      */
-    protected static $allowedFields = ['name', 'photo', 'codigo_modular', 'color', 'date', 'message'];
+    protected static $allowedFields = ['group_name', 'school_id'];
     /**
      * obtener los datos de la tabla en 'array' u 'object'
      */
@@ -26,6 +26,7 @@ class Schools extends Model
      * si hay un campo de contraseña cifrar (true/false)
      */
     protected static $passEncrypt = false;
+
     protected static $useTimestamps   = true;
     /**
      * $createdField debe ser DATETIME o TIMESTAMPS con condicion null

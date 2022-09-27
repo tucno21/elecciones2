@@ -108,7 +108,10 @@ class SchoolController extends Controller
             'date' => 'required',
             'message' => 'required|alpha_space|min:3|max:100',
             // 'photo' => 'requiredFile',
+            'codigo_modular' => 'required|integer|between:7,7',
         ]);
+
+        // dd($data);
         if ($valid !== true) {
             $data->photo = null;
             return back()->route('schools.edit', [
