@@ -61,6 +61,12 @@ $linksSidebar = [
     ],
     [
         'mode' => 'menu',
+        'text' => 'Mi Institución',
+        'url'  => route('schools.myschool'),
+        'icon' => 'bi bi-house-door',
+    ],
+    [
+        'mode' => 'menu',
         'text' => 'Mesa Sufragio',
         'url'  => '/users',
         'icon' => 'bi bi-list-task',

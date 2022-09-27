@@ -146,7 +146,12 @@ class SchoolController extends Controller
             $data->date =  $newDate;
 
             Schools::update($data->id, $data);
-            return redirect()->route('schools.index');
+
+            if (session()->user()->id === 1) {
+                return redirect()->route('schools.index');
+            } else {
+                return redirect()->route('schools.myschool');
+            }
         }
     }
 
@@ -163,6 +168,21 @@ class SchoolController extends Controller
         }
 
         $result = Schools::delete((int)$data->id);
+
         return redirect()->route('schools.index');
+    }
+
+
+    public function myschool()
+    {
+        $school = session()->user();
+
+        $school = Schools::first($school->school_id);
+        // dd($school);
+
+        return view('schools.myschool', [
+            'titleHead' => 'Panel Institución',
+            'school' => $school,
+        ]);
     }
 }
