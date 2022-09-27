@@ -7,6 +7,7 @@ use App\Controller\BackView\UserController;
 use App\Controller\BackView\SchoolController;
 use App\Controller\BackView\DashboardController;
 use App\Controller\BackView\PermissionController;
+use App\Controller\BackView\RolesPermissionController;
 
 /**
  * cargar el autoloader de composer Y la configuracion de la aplicacion
@@ -55,3 +56,7 @@ Route::post('/users/create', [UserController::class, 'store']);
 Route::get('/users/edit', [UserController::class, 'edit'])->name('users.edit');
 Route::post('/users/edit', [UserController::class, 'update']);
 Route::get('/users/destroy', [UserController::class, 'destroy'])->name('users.destroy');
+
+//role y permisos
+Route::get('/roles_permissions', [RolesPermissionController::class, 'edit'])->name('roles.permissions');
+Route::post('/roles_permissions', [RolesPermissionController::class, 'update']);

@@ -39,7 +39,7 @@ class Permissions extends Model
 
     public static function permisosRol($id)
     {
-        $sql = "SELECT permisos.id, permisos.per_name FROM roles_permisos INNER JOIN roles ON roles_permisos.rol_id = roles.id INNER JOIN permisos ON roles_permisos.permiso_id = permisos.id WHERE roles.id = $id";
+        $sql = "SELECT permissions.id, permissions.per_name FROM rol_permission INNER JOIN roles ON rol_permission.rol_id = roles.id INNER JOIN permissions ON rol_permission.permission_id = permissions.id WHERE roles.id = $id";
 
         return self::querySimple($sql);
     }
@@ -47,17 +47,17 @@ class Permissions extends Model
     public static function sync($id, $data)
     {
         //query para eliminar los permisos del permisos del rol
-        $sql = "DELETE FROM `roles_permisos` WHERE rol_id = $id";
+        $sql = "DELETE FROM `rol_permission` WHERE rol_id = $id";
         self::querySimple($sql);
 
         //query para insertar los permisos del rol
         //INSERT INTO `roles_permisos` (`permiso_id`, `rol_id`) VALUES ('1', '1'), ('6', '1'), ('2', '1'), ('3', '1');
-        $sql2 = "INSERT INTO `roles_permisos` (`permiso_id`, `rol_id`) VALUES ";
+        $sql2 = "INSERT INTO `rol_permission` (`rol_id`, `permission_id`) VALUES ";
 
         $permisos = $data;
 
         foreach ($permisos as $key => $value) {
-            $sql2 .= "($value, $id),";
+            $sql2 .= "($id, $value),";
         }
 
         $sql2 = substr($sql2, 0, -1);

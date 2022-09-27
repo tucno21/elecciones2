@@ -22,7 +22,6 @@
                         <th scope="col">Estado</th>
                         <th scope="col">Rol</th>
                         <th scope="col">Escuela</th>
-                        <th scope="col">Permisos</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -40,8 +39,6 @@
 
                             <td><?= $user->rol_name ?></td>
                             <td><?= $user->school_name ?></td>
-
-                            <td><a href="<?= '?id=' . $user->id ?>" class="btn btn-outline-primary btn-sm"><i class="bi bi-key"></i></a></td>
 
                             <td>
                                 <a href="<?= route('users.edit') . '?id=' . $user->id ?>" class="btn btn-outline-warning btn-sm"><i class="bi bi-pencil"></i>
