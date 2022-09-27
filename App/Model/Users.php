@@ -52,10 +52,11 @@ class Users extends Model
     protected static $createdField    = 'created_at';
     protected static $updatedField    = 'updated_at';
 
-    public static function consulta()
+    public static function dataUsers()
     {
-        $query = "SELECT * FROM users";
-        $data = parent::queryMod($query);
+        $query = "SELECT users.id, users.email, users.fullname, users.status, roles.rol_name, schools.name as school_name FROM users inner JOIN roles ON users.rol_id = roles.id inner JOIN schools ON users.school_id = schools.id";
+
+        $data = parent::querySimple($query);
 
         return $data;
     }

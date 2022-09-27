@@ -47,3 +47,11 @@ Route::post('/schools/create', [SchoolController::class, 'store']);
 Route::get('/schools/edit', [SchoolController::class, 'edit'])->name('schools.edit');
 Route::post('/schools/edit', [SchoolController::class, 'update']);
 Route::get('/schools/destroy', [SchoolController::class, 'destroy'])->name('schools.destroy');
+
+//usuarios
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+Route::post('/users/create', [UserController::class, 'store']);
+Route::get('/users/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::post('/users/edit', [UserController::class, 'update']);
+Route::get('/users/destroy', [UserController::class, 'destroy'])->name('users.destroy');
