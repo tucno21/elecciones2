@@ -3,6 +3,8 @@
 use System\Route;
 use App\Controller\Auth\LoginController;
 use App\Controller\BackView\RolController;
+use App\Controller\BackView\UserController;
+use App\Controller\BackView\SchoolController;
 use App\Controller\BackView\DashboardController;
 use App\Controller\BackView\PermissionController;
 
@@ -37,3 +39,11 @@ Route::post('/permissions/create', [PermissionController::class, 'store']);
 Route::get('/permissions/edit', [PermissionController::class, 'edit'])->name('permissions.edit');
 Route::post('/permissions/edit', [PermissionController::class, 'update']);
 Route::get('/permissions/destroy', [PermissionController::class, 'destroy'])->name('permissions.destroy');
+
+//schools
+Route::get('/schools', [SchoolController::class, 'index'])->name('schools.index');
+Route::get('/schools/create', [SchoolController::class, 'create'])->name('schools.create');
+Route::post('/schools/create', [SchoolController::class, 'store']);
+Route::get('/schools/edit', [SchoolController::class, 'edit'])->name('schools.edit');
+Route::post('/schools/edit', [SchoolController::class, 'update']);
+Route::get('/schools/destroy', [SchoolController::class, 'destroy'])->name('schools.destroy');

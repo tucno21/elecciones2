@@ -39,7 +39,7 @@ $linksSidebar = [
         'submenu' => [
             [
                 'text' => 'Usuarios',
-                'url'  => base_url('/pusuarios'),
+                'url'  => route('users.index'),
                 'icon' => 'fas fa-circle',
             ],
             [
@@ -54,7 +54,7 @@ $linksSidebar = [
             ],
             [
                 'text' => 'Instituciones',
-                'url'  => base_url('/proles'),
+                'url'  => route('schools.index'),
                 'icon' => 'bi bi-house-fill',
             ],
         ],
@@ -93,6 +93,7 @@ $linkURL = base_url;
 $linksCss = [
     $linkURL . '/assets/css/bootstrap.css',
     $linkURL . '/assets/css/icon/bootstrap-icons.css',
+    $linkURL . '/assets/plugins/flatpickr/flatpickr.min.css',
 ];
 
 $linksScript = [
@@ -100,4 +101,8 @@ $linksScript = [
     $linkURL . '/assets/js/bootstrap.bundle.js',
     $linkURL . '/assets/js/scripts.js',
     $linkURL . '/assets/js/sb-customizer.js',
+    $linkURL . '/assets/js/sweetalert2.js',
+    $linkURL . '/assets/js/visorfoto.js',
+    $linkURL . '/assets/plugins/flatpickr/flatpickr.js',
+    $linkURL . '/assets/js/fecha.js',
 ];
