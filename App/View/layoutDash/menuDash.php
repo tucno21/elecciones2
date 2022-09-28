@@ -74,7 +74,7 @@ $linksSidebar = [
     [
         'mode' => 'menu',
         'text' => 'Estudiantes',
-        'url'  => '/charts',
+        'url'  => route('students.index'),
         'icon' => 'bi bi-people',
     ],
     [

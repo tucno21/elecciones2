@@ -5,6 +5,7 @@ use App\Controller\Auth\LoginController;
 use App\Controller\BackView\RolController;
 use App\Controller\BackView\UserController;
 use App\Controller\BackView\SchoolController;
+use App\Controller\BackView\StudentController;
 use App\Controller\BackView\DashboardController;
 use App\Controller\BackView\PermissionController;
 use App\Controller\BackView\VotingGroupController;
@@ -68,3 +69,15 @@ Route::get('/votinggroups', [VotingGroupController::class, 'index'])->name('voti
 Route::get('/votinggroups/create', [VotingGroupController::class, 'create'])->name('votinggroups.create');
 Route::post('/votinggroups/create', [VotingGroupController::class, 'store']);
 Route::get('/votinggroups/destroy', [VotingGroupController::class, 'destroy'])->name('votinggroups.destroy');
+
+//students
+Route::get('/students', [StudentController::class, 'index'])->name('students.index');
+Route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
+Route::post('/students/create', [StudentController::class, 'store']);
+Route::get('/students/destroy', [StudentController::class, 'destroy'])->name('students.destroy');
+
+Route::get('/students/tablemodel', [StudentController::class, 'tablemodel'])->name('students.tablemodel');
+Route::get('/students/uploaddata', [StudentController::class, 'uploaddata'])->name('students.uploaddata');
+Route::post('/students/uploaddata', [StudentController::class, 'uploaddatastore']);
+Route::get('/students/report', [StudentController::class, 'report'])->name('students.report');
+Route::get('/students/deleteStudentSchool', [StudentController::class, 'deleteStudentSchool'])->name('students.deleteStudentSchool');
