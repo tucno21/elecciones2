@@ -80,7 +80,7 @@ $linksSidebar = [
     [
         'mode' => 'menu',
         'text' => 'Roles Estudiantes',
-        'url'  => '/charts',
+        'url'  => route('studentroles.index'),
         'icon' => 'bi bi-sliders2-vertical',
     ],
     [

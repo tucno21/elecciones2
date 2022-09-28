@@ -9,6 +9,7 @@ use App\Controller\BackView\StudentController;
 use App\Controller\BackView\DashboardController;
 use App\Controller\BackView\PermissionController;
 use App\Controller\BackView\VotingGroupController;
+use App\Controller\BackView\StudentRolesController;
 use App\Controller\BackView\RolesPermissionController;
 
 /**
@@ -81,3 +82,11 @@ Route::get('/students/uploaddata', [StudentController::class, 'uploaddata'])->na
 Route::post('/students/uploaddata', [StudentController::class, 'uploaddatastore']);
 Route::get('/students/report', [StudentController::class, 'report'])->name('students.report');
 Route::get('/students/deleteStudentSchool', [StudentController::class, 'deleteStudentSchool'])->name('students.deleteStudentSchool');
+
+//studentroles
+Route::get('/studentroles', [StudentRolesController::class, 'index'])->name('studentroles.index');
+Route::get('/studentroles/create', [StudentRolesController::class, 'create'])->name('studentroles.create');
+Route::post('/studentroles/create', [StudentRolesController::class, 'store']);
+Route::get('/studentroles/edit', [StudentRolesController::class, 'edit'])->name('studentroles.edit');
+Route::post('/studentroles/edit', [StudentRolesController::class, 'update']);
+Route::get('/studentroles/destroy', [StudentRolesController::class, 'destroy'])->name('studentroles.destroy');
