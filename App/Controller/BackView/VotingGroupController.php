@@ -2,6 +2,7 @@
 
 namespace App\Controller\BackView;
 
+use App\Model\Schools;
 use System\Controller;
 use App\Model\VotingGroups;
 
@@ -32,62 +33,42 @@ class VotingGroupController extends Controller
         ]);
     }
 
-    public function create()
-    {
-        return view('votinggroups/create', [
-            'titleHead' => 'crear mesas de sufragio',
-        ]);
-    }
-
     public function store()
     {
         $data = $this->request()->getInput();
 
         $valid = $this->validate($data, [
-            'group_name' => 'required|integer|between:6,6',
+            'number_mesa' => 'required|integer',
         ]);
         if ($valid !== true) {
-            return back()->route('votinggroups.create', [
+            return back()->route('votinggroups.index', [
                 'err' =>  $valid,
                 'data' => $data,
             ]);
         } else {
-            $data->school_id = session()->user()->school_id;
+            //eliminar mesas
+            $school_id = session()->user()->school_id;
+            $school = Schools::select('codigo_modular')->where('id', $school_id)->get();
 
-            VotingGroups::create($data);
-            return redirect()->route('votinggroups.index');
-        }
-    }
+            if ($school->codigo_modular === null) {
+                session()->flash('error_code',  'No se ha registrado el codigo modular de su colegio');
+                return redirect()->route('votinggroups.index');
+            }
 
-    public function edit()
-    {
-        $id = $this->request()->getInput();
+            //tres ultimos digitos del codigo modular
+            // $tres = substr($school->codigo_modular, 0, 3); //tres primeros
+            $tres = substr((string)$school->codigo_modular, -3);
 
-        if (empty((array)$id)) {
-            $mesa = null;
-        } else {
-            $mesa = VotingGroups::first($id->id);
-        }
-        return view('votinggroups.edit', [
-            'data' => $mesa,
-        ]);
-    }
+            $grupoMesas = [];
 
-    public function update()
-    {
-        $data = $this->request()->getInput();
+            for ($i = 1; $i <= $data->number_mesa; $i++) {
+                $mesa = str_pad($i, 3, "0", STR_PAD_LEFT);
+                //array push
+                array_push($grupoMesas, $tres . $mesa);
+            }
 
-        $valid = $this->validate($data, [
-            'group_name' => 'required|integer|between:6,6',
-        ]);
+            VotingGroups::generarMesas($school_id, $grupoMesas);
 
-        if ($valid !== true) {
-            return back()->route('votinggroups.edit', [
-                'err' =>  $valid,
-                'data' => $data,
-            ]);
-        } else {
-            VotingGroups::update($data->id, $data);
             return redirect()->route('votinggroups.index');
         }
     }
@@ -95,7 +76,7 @@ class VotingGroupController extends Controller
     public function destroy()
     {
         $data = $this->request()->getInput();
-        //$result = Model::delete((int)$data->id);
-        //return redirect()->route('route.name');
+        $result = VotingGroups::delete((int)$data->id);
+        return redirect()->route('votinggroups.index');
     }
 }

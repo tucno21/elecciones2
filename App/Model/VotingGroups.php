@@ -36,4 +36,23 @@ class VotingGroups extends Model
      */
     protected static $createdField    = 'created_at';
     protected static $updatedField    = 'updated_at';
+
+    public static function generarMesas($school_id, $grupoMesas)
+    {
+        //query para eliminar los permisos del permisos del rol
+        $sql = "DELETE FROM `votinggroups` WHERE school_id = $school_id";
+        self::querySimple($sql);
+
+        //query para insertar los permisos del rol
+        //INSERT INTO `roles_permisos` (`permiso_id`, `rol_id`) VALUES ('1', '1'), ('6', '1'), ('2', '1'), ('3', '1');
+        $sql2 = "INSERT INTO `votinggroups` (`group_name`, `school_id`) VALUES ";
+
+        foreach ($grupoMesas as $key => $value) {
+            $sql2 .= "($value, $school_id),";
+        }
+
+        $sql2 = substr($sql2, 0, -1);
+
+        self::querySimple($sql2);
+    }
 }
