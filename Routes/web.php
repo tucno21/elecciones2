@@ -4,6 +4,7 @@ use System\Route;
 use App\Controller\Auth\LoginController;
 use App\Controller\BackView\RolController;
 use App\Controller\BackView\UserController;
+use App\Controller\BackView\MemberController;
 use App\Controller\BackView\SchoolController;
 use App\Controller\BackView\StudentController;
 use App\Controller\BackView\DashboardController;
@@ -90,3 +91,17 @@ Route::post('/studentroles/create', [StudentRolesController::class, 'store']);
 Route::get('/studentroles/edit', [StudentRolesController::class, 'edit'])->name('studentroles.edit');
 Route::post('/studentroles/edit', [StudentRolesController::class, 'update']);
 Route::get('/studentroles/destroy', [StudentRolesController::class, 'destroy'])->name('studentroles.destroy');
+
+//miembros de mesa
+Route::get('/members', [MemberController::class, 'index'])->name('members.index');
+//lista de miembros de mesa
+Route::get('/members/members', [MemberController::class, 'members'])->name('members.members');
+//buscar DNI
+Route::get('/members/search', [MemberController::class, 'search'])->name('members.search');
+Route::get('/members/student', [MemberController::class, 'student'])->name('members.student');
+
+Route::get('/members/create', [MemberController::class, 'create'])->name('members.create');
+Route::post('/members/create', [MemberController::class, 'store']);
+Route::get('/members/edit', [MemberController::class, 'edit'])->name('members.edit');
+Route::post('/members/edit', [MemberController::class, 'update']);
+Route::get('/members/destroy', [MemberController::class, 'destroy'])->name('members.destroy');

@@ -51,7 +51,7 @@
                             <th scope="row"><?= $i ?></th>
                             <td><?= $m->group_name ?></td>
 
-                            <td>Miembros de mesa</td>
+                            <td> <a href="<?= route('members.index') . '?id=' . $m->id ?>" class="btn btn-outline-dark btn-sm">Mienbros de Mesa</a></td>
 
                             <td>
                                 <a href=<?= route('votinggroups.destroy') . '?id=' . $m->id ?>" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash3"></i>

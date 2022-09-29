@@ -68,4 +68,25 @@ class Students extends Model
 
         return self::querySimple($sql);
     }
+
+    public static function getMembers($votinggroup_id)
+    {
+        $sql = "SELECT students.id, students.fullname, students.dni, students.votinggroup_id, studentroles.name FROM students INNER JOIN studentroles ON students.studentrol_id = studentroles.id WHERE students.votinggroup_id = $votinggroup_id";
+
+        return self::querySimple($sql);
+    }
+
+    public static function searchStudent($data)
+    {
+        $sql = "SELECT id, fullname FROM students WHERE dni=$data->dni AND votinggroup_id=$data->mesa";
+
+        return self::querySimple($sql);
+    }
+
+    public static function deleteUpdate($data)
+    {
+        $sql = "UPDATE `students` SET `studentrol_id` = NULL WHERE `students`.`id` = $data->id";
+
+        return self::querySimple($sql);
+    }
 }
