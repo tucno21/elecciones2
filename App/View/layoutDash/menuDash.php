@@ -86,7 +86,7 @@ $linksSidebar = [
     [
         'mode' => 'menu',
         'text' => 'Candidatos',
-        'url'  => '/charts',
+        'url'  => route('candidates.index'),
         'icon' => 'bi bi-person-workspace',
     ],
 ];

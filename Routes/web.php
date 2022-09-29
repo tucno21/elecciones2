@@ -7,6 +7,7 @@ use App\Controller\BackView\UserController;
 use App\Controller\BackView\MemberController;
 use App\Controller\BackView\SchoolController;
 use App\Controller\BackView\StudentController;
+use App\Controller\BackView\CandidateController;
 use App\Controller\BackView\DashboardController;
 use App\Controller\BackView\PermissionController;
 use App\Controller\BackView\VotingGroupController;
@@ -105,3 +106,11 @@ Route::post('/members/create', [MemberController::class, 'store']);
 Route::get('/members/edit', [MemberController::class, 'edit'])->name('members.edit');
 Route::post('/members/edit', [MemberController::class, 'update']);
 Route::get('/members/destroy', [MemberController::class, 'destroy'])->name('members.destroy');
+
+//crud candidates
+Route::get('/candidates', [CandidateController::class, 'index'])->name('candidates.index');
+Route::get('/candidates/create', [CandidateController::class, 'create'])->name('candidates.create');
+Route::post('/candidates/create', [CandidateController::class, 'store']);
+Route::get('/candidates/edit', [CandidateController::class, 'edit'])->name('candidates.edit');
+Route::post('/candidates/edit', [CandidateController::class, 'update']);
+Route::get('/candidates/delete', [CandidateController::class, 'destroy'])->name('candidates.destroy');
