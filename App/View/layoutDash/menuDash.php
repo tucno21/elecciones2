@@ -28,7 +28,7 @@ $linksSidebar = [
     [
         'mode' => 'menu',
         'text' => 'Dashboard',
-        'url'  => '/',
+        'url'  => route('dashboard.index'),
         'icon' => 'bi bi-speedometer2',
     ],
     [
