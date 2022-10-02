@@ -2,6 +2,7 @@
 
 use System\Route;
 use App\Controller\Auth\LoginController;
+use App\Controller\BackView\QrController;
 use App\Controller\BackView\RolController;
 use App\Controller\BackView\UserController;
 use App\Controller\BackView\MemberController;
@@ -114,3 +115,6 @@ Route::post('/candidates/create', [CandidateController::class, 'store']);
 Route::get('/candidates/edit', [CandidateController::class, 'edit'])->name('candidates.edit');
 Route::post('/candidates/edit', [CandidateController::class, 'update']);
 Route::get('/candidates/delete', [CandidateController::class, 'destroy'])->name('candidates.destroy');
+
+//qr
+Route::get('/qr', [QrController::class, 'index'])->name('qr.index');

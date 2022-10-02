@@ -89,4 +89,13 @@ class Students extends Model
 
         return self::querySimple($sql);
     }
+
+    public static function fullStudent($school_id)
+    {
+        $sql = "SELECT students.id, students.fullname, students.dni, students.password, students.school_id, students.votinggroup_id, schools.name, votinggroups.group_name FROM students INNER JOIN schools ON students.school_id = schools.id INNER JOIN votinggroups ON students.votinggroup_id = votinggroups.id WHERE students.school_id = $school_id";
+
+        $data = parent::querySimple($sql);
+
+        return $data;
+    }
 }
