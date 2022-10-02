@@ -2,6 +2,7 @@
 
 namespace App\Controller\Auth;
 
+use App\Model\Students;
 use App\Model\Users;
 use System\Controller;
 
@@ -20,7 +21,29 @@ class LoginController extends Controller
     public function store()
     {
         $data = $this->request()->getInput();
-        dd($data);
+
+        $valid = $this->validate($data, [
+            'dni' => 'required|integer|between:8,8|not_unique:Students,dni',
+        ]);
+        if ($valid !== true) {
+            return back()->route('login.index', [
+                'err' =>  $valid,
+                'data' => $data,
+            ]);
+        } else {
+            session()->remove('renderView');
+            session()->remove('reserveRoute');
+
+            $student = Students::where('dni', $data->dni)->first();
+
+            if ($student->studentrol_id === 1) {
+                auth()->attempt($student);
+                return redirect()->route('votings.index');
+            }
+
+            session()->flash('errorSesion', 'No tienes permisos para ingresar');
+            return redirect()->route('login.index');
+        }
     }
 
     public function admin()

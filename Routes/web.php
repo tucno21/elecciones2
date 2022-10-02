@@ -7,6 +7,7 @@ use App\Controller\BackView\RolController;
 use App\Controller\BackView\UserController;
 use App\Controller\BackView\MemberController;
 use App\Controller\BackView\SchoolController;
+use App\Controller\BackView\VotingController;
 use App\Controller\BackView\StudentController;
 use App\Controller\BackView\CandidateController;
 use App\Controller\BackView\DashboardController;
@@ -118,3 +119,6 @@ Route::get('/candidates/delete', [CandidateController::class, 'destroy'])->name(
 
 //qr
 Route::get('/qr', [QrController::class, 'index'])->name('qr.index');
+
+//votaciones
+Route::get('/votings', [VotingController::class, 'index'])->name('votings.index');
