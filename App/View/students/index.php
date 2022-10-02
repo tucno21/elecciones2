@@ -40,6 +40,7 @@
 
                 <a href="<?= route('students.report') ?>" class="btn btn-outline-success btn-sm">Reporte</a>
                 <a href="<?= route('students.deleteStudentSchool') ?>" class="btn btn-outline-dark btn-sm">Borrar Estudiantes</a>
+                <a href="<?= route('qr.index') ?>" target="_blanck" class="btn btn-outline-dark btn-sm">DNI QR <i class="mx-1 bi bi-qr-code"></i></a>
             </div>
 
 
