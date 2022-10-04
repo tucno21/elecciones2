@@ -4,12 +4,12 @@ namespace App\Model;
 
 use System\Model;
 
-class Candidates extends Model
+class StartVoting extends Model
 {
     /**
      * nombre de la tabla
      */
-    protected static $table       = 'candidates';
+    protected static $table       = 'start_voting';
     /**
      * nombre primary key
      */
@@ -17,7 +17,7 @@ class Candidates extends Model
     /**
      * nombre de la columnas de la tabla
      */
-    protected static $allowedFields = ['fullname', 'dni', 'photo', 'logo', 'group_name', 'estado', 'school_id'];
+    protected static $allowedFields = ['student_id', 'date_start', 'date_end'];
     /**
      * obtener los datos de la tabla en 'array' u 'object'
      */
@@ -26,13 +26,5 @@ class Candidates extends Model
      * si hay un campo de contraseña cifrar (true/false)
      */
     protected static $passEncrypt = false;
-
     protected static $useTimestamps   = false;
-
-    public static function getCandidates($school_id)
-    {
-        $sql = "SELECT * FROM candidates WHERE school_id = $school_id";
-
-        return self::querySimple($sql);
-    }
 }

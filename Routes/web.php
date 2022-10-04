@@ -122,3 +122,13 @@ Route::get('/qr', [QrController::class, 'index'])->name('qr.index');
 
 //votaciones
 Route::get('/votings', [VotingController::class, 'index'])->name('votings.index');
+Route::get('/votings/create', [VotingController::class, 'create'])->name('votings.create');
+Route::post('/votings/create', [VotingController::class, 'store']);
+Route::get('/votings/camera', [VotingController::class, 'camera'])->name('votings.camera');
+
+Route::get('/votings/search', [VotingController::class, 'search'])->name('votings.search');
+
+Route::get('/votings/studentvoto', [VotingController::class, 'candidate'])->name('votings.candidate');
+Route::post('/votings/studentvoto', [VotingController::class, 'candidatePost']);
+
+Route::get('/votings/close', [VotingController::class, 'close'])->name('votings.close');

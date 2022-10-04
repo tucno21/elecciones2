@@ -17,7 +17,7 @@ class Students extends Model
     /**
      * nombre de la columnas de la tabla
      */
-    protected static $allowedFields = ['fullname', 'dni', 'password', 'school_id', 'votinggroup_id', 'candidate_id', 'studentrol_id'];
+    protected static $allowedFields = ['fullname', 'dni', 'password', 'school_id', 'votinggroup_id', 'candidate_id', 'studentrol_id', 'date_voting'];
     /**
      * obtener los datos de la tabla en 'array' u 'object'
      */
@@ -64,7 +64,7 @@ class Students extends Model
 
     public static function getStudents($school_id)
     {
-        $sql = "SELECT students.id, students.fullname, students.dni, students.candidate_id, students.updated_at, students.school_id, votinggroups.group_name FROM students INNER JOIN votinggroups ON students.votinggroup_id = votinggroups.id WHERE students.school_id = $school_id";
+        $sql = "SELECT students.id, students.fullname, students.dni, students.candidate_id, students.date_voting, students.school_id, votinggroups.group_name FROM students INNER JOIN votinggroups ON students.votinggroup_id = votinggroups.id WHERE students.school_id = $school_id";
 
         return self::querySimple($sql);
     }
@@ -93,6 +93,15 @@ class Students extends Model
     public static function fullStudent($school_id)
     {
         $sql = "SELECT students.id, students.fullname, students.dni, students.password, students.school_id, students.votinggroup_id, schools.name, votinggroups.group_name FROM students INNER JOIN schools ON students.school_id = schools.id INNER JOIN votinggroups ON students.votinggroup_id = votinggroups.id WHERE students.school_id = $school_id";
+
+        $data = parent::querySimple($sql);
+
+        return $data;
+    }
+    public static function presidentStudent($dni)
+    {
+
+        $sql = "SELECT students.id, students.fullname, students.dni, students.password, students.school_id, students.votinggroup_id,students.studentrol_id,students.candidate_id, schools.name, votinggroups.group_name FROM students INNER JOIN schools ON students.school_id = schools.id INNER JOIN votinggroups ON students.votinggroup_id = votinggroups.id WHERE students.dni = $dni";
 
         $data = parent::querySimple($sql);
 

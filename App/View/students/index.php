@@ -76,7 +76,7 @@
                                 </td>
                             <?php }; ?>
 
-                            <td><?= $user->updated_at ?></td>
+                            <td><?= $user->date_voting ?></td>
 
                             <td>
                                 <a href=<?= route('students.destroy') . '?id=' . $user->id ?>" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash3"></i>

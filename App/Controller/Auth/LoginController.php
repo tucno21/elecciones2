@@ -34,7 +34,7 @@ class LoginController extends Controller
             session()->remove('renderView');
             session()->remove('reserveRoute');
 
-            $student = Students::where('dni', $data->dni)->first();
+            $student = Students::presidentStudent($data->dni);
 
             if ($student->studentrol_id === 1) {
                 auth()->attempt($student);
