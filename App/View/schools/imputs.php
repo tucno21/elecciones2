@@ -35,6 +35,19 @@
         <?php endif; ?>
     </div>
 </div>
+<!-- Color letra -->
+<div class="mb-3">
+    <p class="p-0 m-0 fw-bold">Color de Letra</p>
+    <div class="input-group input-group-sm ">
+        <spam class="input-group-text"><i class="bi bi-palette"></i></spam>
+        <input type="color" class="form-control form-control-color <?= isset($err->colorletter) ? 'is-invalid' : '' ?>" name="colorletter" placeholder="Color IE" value="<?= isset($data->colorletter) ? $data->colorletter : '' ?>">
+        <?php if (isset($err->colorletter)) : ?>
+            <div class="invalid-feedback">
+                <?= $err->colorletter ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
 <!-- Fecha -->
 <div class="mb-3">
     <div class="input-group input-group-sm ">
