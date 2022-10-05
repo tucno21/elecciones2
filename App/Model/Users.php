@@ -60,4 +60,13 @@ class Users extends Model
 
         return $data;
     }
+
+    public static function authUser($email)
+    {
+        $query = "SELECT users.id, users.email, users.fullname, users.status,users.school_id,users.rol_id, schools.name as school_name, schools.color, schools.colorletter  FROM users inner JOIN schools ON users.school_id = schools.id WHERE users.email = '$email'";
+
+        $data = parent::querySimple($query);
+
+        return $data;
+    }
 }

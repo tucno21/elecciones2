@@ -67,11 +67,12 @@ class LoginController extends Controller
                 'data' => $data,
             ]);
         } else {
-            $user = Users::select('id, fullname, email, school_id,rol_id, status')->where('email', $data->email)->get();
+            // $user = Users::select('id, fullname, email, school_id,rol_id, status')->where('email', $data->email)->get();
 
             // $user = Users::select('users.id', 'users.email', 'users.name', 'users.status', 'users.rol_id', 'roles.rol_name')
             //     ->join('roles', 'users.rol_id', '=', 'roles.id')
             //     ->get();
+            $user = Users::authUser($data->email);
 
             if ($user->status == 0) {
                 session()->flash('status', 'El usuario se encuentra desactivado');
