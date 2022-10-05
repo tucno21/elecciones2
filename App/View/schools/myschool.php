@@ -32,7 +32,7 @@
                             <td><img src="<?= base_url('/assets/img/' . $school->photo) ?>" alt="avatar" class="img-thumbnail" width="40px"></td>
                         <?php endif; ?>
                         <td style="background-color: <?= $school->color; ?>;">
-                            <div><?= $school->color; ?></div>
+                            <div style="color: <?= $school->colorletter; ?>;"><?= $school->color; ?></div>
                         </td>
                         <td><?= $school->date ?></td>
                         <td><?= $school->message ?></td>

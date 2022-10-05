@@ -17,7 +17,7 @@ class Schools extends Model
     /**
      * nombre de la columnas de la tabla
      */
-    protected static $allowedFields = ['name', 'photo', 'codigo_modular', 'color', 'date', 'message'];
+    protected static $allowedFields = ['name', 'photo', 'codigo_modular', 'color', 'colorletter', 'date', 'message'];
     /**
      * obtener los datos de la tabla en 'array' u 'object'
      */

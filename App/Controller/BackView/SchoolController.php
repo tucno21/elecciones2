@@ -46,6 +46,7 @@ class SchoolController extends Controller
         $valid = $this->validate($data, [
             'name' => 'required|alpha_space|min:3|max:50',
             'color' => 'required',
+            'colorletter' => 'required',
             'date' => 'required',
             'message' => 'required|alpha_space|min:3|max:100',
             'photo' => 'requiredFile',
@@ -105,6 +106,7 @@ class SchoolController extends Controller
         $valid = $this->validate($data, [
             'name' => 'required|alpha_space|min:3|max:50',
             'color' => 'required',
+            'colorletter' => 'required',
             'date' => 'required',
             'message' => 'required|alpha_space|min:3|max:100',
             // 'photo' => 'requiredFile',
