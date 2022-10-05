@@ -44,7 +44,8 @@
             </div>
 
 
-            <table class="table table-striped">
+            <table class="table table-sm table-striped dt-responsive" id="datatableStudent">
+                <!-- <table class="table table-sm table-striped dt-responsive nowrap" id="example"> -->
                 <thead>
                     <tr>
                         <th scope="col">N°</th>
