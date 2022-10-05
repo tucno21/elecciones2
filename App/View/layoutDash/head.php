@@ -15,13 +15,40 @@
     <?php foreach ($linksCss as $value) : ?>
         <link href="<?= $value ?>" rel="stylesheet" />
     <?php endforeach; ?>
+
+    <?php $dS = session()->user(); ?>
+
+    <style>
+        .color-dashboard {
+            background-color: <?= isset($dS->color) ? $dS->color : '#ffffff' ?> !important;
+            background-image: linear-gradient(135deg, <?= $dS->color ?> 0%, <?= $dS->color ?>25 100%) !important;
+        }
+
+        .color-footer {
+            background-color: <?= isset($dS->color) ? $dS->color . '35' : '#ffffff' ?>;
+        }
+
+        .bg-mod {
+            background-color: <?= isset($dS->color) ? $dS->color : '#ffffff' ?>;
+            color: red;
+        }
+
+        .topnav.navbar-light .navbar-brand {
+            color: <?= isset($dS->colorletter) ? $dS->colorletter : '#000' ?>;
+        }
+
+        .color-texto {
+            color: <?= isset($dS->colorletter) ? $dS->colorletter : '#000' ?>;
+        }
+    </style>
+
 </head>
 
 <body class="nav-fixed">
-    <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
+    <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-mod" id="sidenavAccordion">
         <!-- Sidenav Toggle Button-->
         <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle">
-            <i class="bi bi-list text-dark"></i>
+            <i class="bi bi-list fs-4 color-texto"></i>
         </button>
         <!-- Navbar Brand-->
         <!-- * * Tip * * You can use text or an image for your navbar brand.-->
@@ -31,20 +58,6 @@
 
         <ul class="navbar-nav align-items-center ms-auto">
 
-            <!-- Navbar Search Dropdown-->
-            <!-- * * Note: * * Visible only below the lg breakpoint-->
-            <li class="nav-item dropdown no-caret me-3 d-lg-none">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="searchDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-search"></i></a>
-                <!-- Dropdown - Search-->
-                <div class="dropdown-menu dropdown-menu-end p-3 shadow animated--fade-in-up" aria-labelledby="searchDropdown">
-                    <form class="form-inline me-auto w-100">
-                        <div class="input-group input-group-joined input-group-solid">
-                            <input class="form-control pe-0" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-                            <div class="input-group-text"><i class="bi bi-search"></i></div>
-                        </div>
-                    </form>
-                </div>
-            </li>
 
             <!-- User Dropdown-->
             <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
@@ -78,25 +91,6 @@
             <nav class="sidenav shadow-right sidenav-light">
                 <div class="sidenav-menu">
                     <div class="nav accordion" id="accordionSidenav">
-                        <!-- Sidenav Menu Heading (Account)-->
-                        <!-- * * Note: * * Visible only on and above the sm breakpoint-->
-                        <div class="sidenav-menu-heading d-sm-none">Account</div>
-                        <!-- Sidenav Link (Alerts)-->
-                        <!-- * * Note: * * Visible only on and above the sm breakpoint-->
-                        <a class="nav-link d-sm-none" href="#!">
-                            <div class="nav-link-icon">
-                                <i class="bi bi-bell"></i>
-                            </div>
-                            Alerts
-                            <span class="badge bg-warning-soft text-warning ms-auto">4 New!</span>
-                        </a>
-                        <!-- Sidenav Link (Messages)-->
-                        <!-- * * Note: * * Visible only on and above the sm breakpoint-->
-                        <a class="nav-link d-sm-none" href="#!">
-                            <div class="nav-link-icon"><i class="bi bi-envelope"></i></div>
-                            Messages
-                            <span class="badge bg-success-soft text-success ms-auto">2 New!</span>
-                        </a>
                         <!-- Sidenav Menu Heading (Core)-->
 
                         <?php foreach ($linksSidebar as $key => $value) : ?>
