@@ -1,7 +1,7 @@
 <?php
 
 // DATOS GENERALES ADMIN
-$title = 'Elecciones ' . date('Y');
+$title = 'Voto Electronico ' . date('Y');
 $titleShort = 'H';
 $mainLink = base_url('/dashboard');
 $logoAdmin = '../public/logo/logo.png';
