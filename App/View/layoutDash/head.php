@@ -10,7 +10,7 @@
     <meta name="author" content="" />
     <title><?= isset($titleHead) ? $titleHead : 'Elecciones ' . date('Y') ?></title>
 
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="<?= base_url('/assets/img/qricon.png') ?>" />
 
     <?php foreach ($linksCss as $value) : ?>
         <link href="<?= $value ?>" rel="stylesheet" />
