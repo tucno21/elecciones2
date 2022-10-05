@@ -1,5 +1,10 @@
 $(document).ready(function () {
     $('#datatableStudent').DataTable({
+        "pageLength": 5,
+        lengthMenu: [
+            [5, 10, 15, -1], //lista real
+            [5, 10, 15, 'All'], //lista que se ve
+        ],
         language: {
             "decimal": "",
             "emptyTable": "No hay información",
