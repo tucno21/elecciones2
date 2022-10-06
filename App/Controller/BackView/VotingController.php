@@ -120,7 +120,9 @@ class VotingController extends Controller
 
         $school = Schools::where('id', $president->school_id)->first();
         $candidatos = Candidates::getCandidates($president->school_id);
-
+        if (is_object($candidatos)) {
+            $candidatos = [$candidatos];
+        }
         // dd($candidatos);
         return view('votings/voto', [
             'title' => 'Sistema de votación',
