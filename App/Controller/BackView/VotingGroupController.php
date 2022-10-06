@@ -8,6 +8,7 @@ use App\Model\Students;
 use App\Library\FPDF\FPDF;
 use App\Model\VotingGroups;
 use App\Library\PdfList\PdfList;
+use App\Library\PdfList\PdfListWall;
 
 class VotingGroupController extends Controller
 {
@@ -102,26 +103,49 @@ class VotingGroupController extends Controller
         $pdf->AliasNbPages();
         $pdf->AddPage();
 
-        //datos
-        $pdf->SetFont('Arial', 'B', 9);
-        $pdf->cell(10, 8, utf8_decode('N°'), 'RTLB', 0, 'C',);
-        $pdf->cell(110, 8, utf8_decode('APELLIDOS Y NOMBRES'), 'RTLB', 0, 'C',);
-        $pdf->cell(20, 8, utf8_decode('DNI'), 'RTLB', 0, 'C',);
-        $pdf->cell(25, 8, utf8_decode('FIRMA'), 'RTLB', 0, 'C',);
-        $pdf->cell(25, 8, utf8_decode('HUELLA'), 'RTLB', 1, 'C',);
-
         //foreach
 
-        $pdf->SetFont('Arial', '', 9);
+        $pdf->SetFont('Arial', '', 10);
 
         foreach ($estudiantes as $key => $s) {
             $pdf->cell(10, 20, utf8_decode($key + 1), 'RTLB', 0, 'C',);
-            $pdf->cell(110, 20, utf8_decode($s->fullname), 'RTLB', 0, 'L',);
-            $pdf->cell(20, 20, utf8_decode($s->dni), 'RTLB', 0, 'C',);
-            $pdf->cell(25, 20, utf8_decode(''), 'RTLB', 0, 'C',);
-            $pdf->cell(25, 20, utf8_decode(''), 'RTLB', 1, 'C',);
+            $pdf->cell(95, 20, utf8_decode($s->fullname), 'RTLB', 0, 'L',);
+            $pdf->cell(25, 20, utf8_decode($s->dni), 'RTLB', 0, 'C',);
+            $pdf->cell(30, 20, utf8_decode(''), 'RTLB', 0, 'C',);
+            $pdf->cell(30, 20, utf8_decode(''), 'RTLB', 1, 'C',);
         }
 
+
+        // $pdf->Output();
+        $pdf->Output("I", "mesa-$data->mesa.pdf");
+    }
+
+    public function pdfWall()
+    {
+        $data = $this->request()->getInput();
+
+        $mesa = VotingGroups::where('group_name', $data->mesa)->get();
+
+        $school = Schools::school($mesa->school_id);
+        $rutaLogo = DIR_IMG  . $school->photo;
+        $rutaEscudo = DIR_IMG . 'escudo.png';
+        $rutaOnpe = DIR_IMG . 'onpe.png';
+
+        $estudiantes = Students::getMembersGroup($mesa->id);
+
+        $pdf = new PdfListWall('P', 'mm', 'A4', $school->name, $mesa->group_name, $rutaLogo, $rutaEscudo, $rutaOnpe);
+        $pdf->AliasNbPages();
+        $pdf->AddPage();
+
+        //foreach
+
+        $pdf->SetFont('Arial', '', 11);
+
+        foreach ($estudiantes as $key => $s) {
+            $pdf->cell(15, 10, utf8_decode($key + 1), 'RTLB', 0, 'C',);
+            $pdf->cell(140, 10, utf8_decode($s->fullname), 'RTLB', 0, 'L',);
+            $pdf->cell(35, 10, utf8_decode($s->dni), 'RTLB', 1, 'C',);
+        }
 
         // $pdf->Output();
         $pdf->Output("I", "mesa-$data->mesa.pdf");

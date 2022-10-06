@@ -4,7 +4,7 @@ namespace App\Library\PdfList;
 
 use App\Library\FPDF\FPDF;
 
-class PdfList extends FPDF
+class PdfListWall extends FPDF
 {
     private $shoolName;
     private $numberMesa;
@@ -44,20 +44,19 @@ class PdfList extends FPDF
         $this->SetFont('Arial', '', 9);
         $this->cell(190, 8, utf8_decode('Ubica tus Apellidos y Nombres, Numero de Orden, en la mesa indica tu  número de orden'), '', 1, 'L');
 
+
         //datos
-        $this->SetFont('Arial', 'B', 10);
-        $this->cell(10, 8, utf8_decode('N°'), 'RTLB', 0, 'C',);
-        $this->cell(95, 8, utf8_decode('APELLIDOS Y NOMBRES'), 'RTLB', 0, 'C',);
-        $this->cell(25, 8, utf8_decode('DNI'), 'RTLB', 0, 'C',);
-        $this->cell(30, 8, utf8_decode('FIRMA'), 'RTLB', 0, 'C',);
-        $this->cell(30, 8, utf8_decode('HUELLA'), 'RTLB', 1, 'C',);
+        $this->SetFont('Arial', 'B', 11);
+        $this->cell(15, 11, utf8_decode('N°'), 'RTLB', 0, 'C',);
+        $this->cell(140, 11, utf8_decode('APELLIDOS Y NOMBRES'), 'RTLB', 0, 'C',);
+        $this->cell(35, 11, utf8_decode('DNI'), 'RTLB', 1, 'C',);
     }
 
     function Footer()
     {
         $this->SetY(-15);
         $this->SetFont('Arial', '', 9);
-        $this->cell(150, 8, utf8_decode('Para ser Usado en el Aula de Votación'), '', 0, 'C');
+        $this->cell(150, 8, utf8_decode('Para ser pegado en la entrada del Aula de Votación'), '', 0, 'C');
         // Position at 1.5 cm from bottom
         $this->SetY(-15);
         // Arial italic 8
