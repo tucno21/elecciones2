@@ -47,19 +47,28 @@ class StudentController extends Controller
     {
         $excel = new Spreadsheet();
         $hojaActiva = $excel->getActiveSheet();
-        $hojaActiva->setTitle('datos');
+        $hojaActiva->setTitle('datos_estudiantes');
         $hojaActiva->getTabColor()->setRGB('FF0000');
 
-        $hojaActiva->getColumnDimension('A')->setWidth(30);
-        $hojaActiva->setCellValue('A1', 'NOMBRE Y APELLIDOS');
-        $hojaActiva->getColumnDimension('B')->setWidth(15);
-        $hojaActiva->setCellValue('B1', 'DNI');
-        $hojaActiva->getColumnDimension('C')->setWidth(10);
-        $hojaActiva->setCellValue('C1', 'N° Mesa');
+        //COLOR CELDA
+        $hojaActiva->getStyle('A1:E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setRGB('BDECB6');
 
-        $hojaActiva->setCellValue('A2', 'Juan Velarde Fajardo');
-        $hojaActiva->setCellValue('B2', '44442222');
-        $hojaActiva->setCellValue('C2', '632001');
+        $hojaActiva->getColumnDimension('A')->setWidth(20);
+        $hojaActiva->setCellValue('A1', 'APELLIDO PATERNO');
+        $hojaActiva->getColumnDimension('B')->setWidth(20);
+        $hojaActiva->setCellValue('B1', 'APELLIDO MATERNO');
+        $hojaActiva->getColumnDimension('C')->setWidth(20);
+        $hojaActiva->setCellValue('C1', 'NOMBRES');
+        $hojaActiva->getColumnDimension('D')->setWidth(20);
+        $hojaActiva->setCellValue('D1', 'DNI');
+        $hojaActiva->getColumnDimension('E')->setWidth(10);
+        $hojaActiva->setCellValue('E1', 'N° Mesa');
+
+        $hojaActiva->setCellValue('A2', 'GALINDO');
+        $hojaActiva->setCellValue('B2', 'UTOS');
+        $hojaActiva->setCellValue('C2', 'JIMMY JEFERSON');
+        $hojaActiva->setCellValue('D2', '44442222');
+        $hojaActiva->setCellValue('E2', '632001');
 
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename="ListaEstudiantes.xlsx"');
