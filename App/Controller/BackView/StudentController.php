@@ -131,8 +131,10 @@ class StudentController extends Controller
 
     public static function report()
     {
-        $resultados = Students::get();
-        // dd($resultados);
+        $schoolID = session()->user()->school_id;
+
+        $resultados = Students::where('school_id', $schoolID)->get();
+
         //cuando viene un solo objeto
         if (is_object($resultados)) {
             $resultados = [$resultados];
@@ -165,7 +167,7 @@ class StudentController extends Controller
             } else {
                 $hojaActiva->setCellValue('D' . $fila, 'si');
             }
-            $hojaActiva->setCellValue('E' . $fila, $value->updated_at);
+            $hojaActiva->setCellValue('E' . $fila, $value->date_voting);
             $fila++;
         }
 
