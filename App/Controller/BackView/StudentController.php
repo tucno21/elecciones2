@@ -99,6 +99,7 @@ class StudentController extends Controller
             $codigoModular = Schools::first($school->id)->codigo_modular;
             if ($codigoModular === null) {
                 session()->flash('error_code',  'No se ha registrado el codigo modular de la institución');
+                unlink($excelPath);
                 return redirect()->route('students.index');
             };
 
@@ -110,23 +111,26 @@ class StudentController extends Controller
             $dataStudents = [];
 
             for ($fila = 2; $fila <= $numeroFilas; $fila++) {
-                $valorA = $hojaactual->getCellByColumnAndRow(1, $fila);
-                $valorB = $hojaactual->getCellByColumnAndRow(2, $fila);
-                $valorC = $hojaactual->getCellByColumnAndRow(3, $fila);
+                $valorA = $hojaactual->getCellByColumnAndRow(1, $fila); //apellido paterno
+                $valorB = $hojaactual->getCellByColumnAndRow(2, $fila); //apellido materno
+                $valorC = $hojaactual->getCellByColumnAndRow(3, $fila); //nombre
+                $valorD = $hojaactual->getCellByColumnAndRow(4, $fila); //dni
+                $valorE = $hojaactual->getCellByColumnAndRow(5, $fila); //mesa
 
-                if (array_search($valorC->getValue(), $mesas) === false) {
-                    session()->flash('error_code',  'Revisa el archivo, la mesa ' . $valorC->getValue() . ' no existe');
+                if (array_search($valorE->getValue(), $mesas) === false) {
+                    session()->flash('error_code',  'Revisa el archivo, la mesa ' . $valorE->getValue() . ' no existe');
+                    unlink($excelPath);
                     return redirect()->route('students.index');
                 };
 
                 //array push
                 array_push($dataStudents, [
-                    'fullname' => $valorA->getValue(),
-                    'dni' => $valorB->getValue(),
+                    'fullname' => $valorA->getValue() . ' ' . $valorB->getValue() . ', ' . $valorC->getValue(),
+                    'dni' => $valorD->getValue(),
                     //buscar id en $mesas
-                    'votinggroup_id' => array_search($valorC->getValue(), $mesas),
+                    'votinggroup_id' => array_search($valorE->getValue(), $mesas),
                     'school_id' => $school->school_id,
-                    'password' => md5($valorB->getValue() . $codigoModular),
+                    'password' => md5($valorD->getValue() . $codigoModular),
                 ]);
             }
 
