@@ -34,6 +34,10 @@ class DashboardController extends Controller
         $estudiantes = Students::where('school_id', $id)->get();
 
         $votos = Candidates::AllVotos($id);
+        if (is_object($votos)) {
+            $votos = [$votos];
+        }
+
         $resul = [];
         foreach ($votos as $key => $value) {
             array_push($resul, $value->fullname);
