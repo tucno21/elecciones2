@@ -16,7 +16,7 @@
 
         .bg-header {
             background-color: <?= $school->color ?>;
-            color: #fff;
+            color: <?= $school->colorletter ?>;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
@@ -32,6 +32,10 @@
 
         .png-shadow {
             filter: drop-shadow(2px 5px 5px #222);
+        }
+
+        .color-texto-muted {
+            color: <?= $school->colorletter ?>80;
         }
     </style>
 </head>
@@ -96,7 +100,7 @@
 
         <footer class="mt-auto bg-footer">
             <div class="container text-center p-2">
-                <p class="text-white-50 m-0">Dev: Ideasweb21 © 2022 - Todos los derechos reservados</p>
+                <p class="color-texto-muted m-0">Dev: Ideasweb21 © 2022 - Todos los derechos reservados</p>
             </div>
         </footer>
     </div>

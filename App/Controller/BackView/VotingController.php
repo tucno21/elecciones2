@@ -22,7 +22,7 @@ class VotingController extends Controller
     {
         $president =  session()->user();
         $school = Schools::where('id', $president->school_id)->first();
-        // dd($president);
+        // dd($school);
         return view('votings/index', [
             'title' => 'Sistema de votación',
             'school' => $school,

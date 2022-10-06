@@ -16,7 +16,7 @@
 
         .bg-header {
             background-color: <?= $school->color ?>;
-            color: #fff;
+            color: <?= $school->colorletter ?>;
             /* sombra */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
@@ -41,6 +41,10 @@
             align-items: center;
             /* eliminar borde */
             border: 0;
+        }
+
+        .color-texto-muted {
+            color: <?= $school->colorletter ?>80;
         }
 
         /* .btn-check:checked+.btn {
@@ -170,7 +174,7 @@
 
         <footer class="mt-auto bg-footer">
             <div class="container text-center p-2">
-                <p class="text-white-50 m-0">Dev: Ideasweb21 © 2022 - Todos los derechos reservados</p>
+                <p class="color-texto-muted m-0">Dev: Ideasweb21 © 2022 - Todos los derechos reservados</p>
             </div>
         </footer>
     </div>
