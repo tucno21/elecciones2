@@ -118,7 +118,8 @@ class Route
                 try {
                     return call_user_func($callback, new static);
                 } catch (Throwable $th) {
-                    $mensaje = "El metodo  '" . $callback[1] . "' no existe en la clase " . $class;
+                    $mensaje = $th->getMessage();
+                    // $mensaje = "El metodo  '" . $callback[1] . "' no existe en la clase " . $class;
                     $archivo = $th->getFile();
                     $line = $th->getLine();
                     include_once 'mensajeThorwable.php';
