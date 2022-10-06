@@ -35,4 +35,12 @@ class Candidates extends Model
 
         return self::querySimple($sql);
     }
+
+    public static function AllVotos($school_id)
+    {
+        $query = "SELECT E.candidate_id, C.fullname FROM students E INNER JOIN candidates C ON E.candidate_id = C.id WHERE E.school_id = $school_id";
+
+        $data = parent::querySimple($query);
+        return $data;
+    }
 }

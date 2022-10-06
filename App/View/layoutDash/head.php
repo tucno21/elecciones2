@@ -40,6 +40,10 @@
         .color-texto {
             color: <?= isset($dS->colorletter) ? $dS->colorletter : '#000' ?>;
         }
+
+        .color-texto-muted {
+            color: <?= isset($dS->colorletter) ? $dS->colorletter . '80' : '#000' ?>;
+        }
     </style>
 
 </head>

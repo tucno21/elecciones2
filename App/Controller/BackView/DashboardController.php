@@ -2,7 +2,10 @@
 
 namespace App\Controller\BackView;
 
+use App\Model\Schools;
 use System\Controller;
+use App\Model\Students;
+use App\Model\Candidates;
 
 class DashboardController extends Controller
 {
@@ -16,72 +19,72 @@ class DashboardController extends Controller
 
     public function index()
     {
+        $id = session()->user()->school_id;
+        $school = Schools::first($id);
+        // dd(session()->user());
+
+        $candidatos = Candidates::where('school_id', $id)->get();
+        $estudiantes = Students::where('school_id', $id)->get();
+
+        $votos = Candidates::AllVotos($id);
+        $resul = [];
+        foreach ($votos as $key => $value) {
+            array_push($resul, $value->fullname);
+        }
+        $resul2 = array_count_values($resul);
+        $resultados = (object)$resul2;
+
+        //ganador
+        $max = 0;
+        $ganador = '';
+        foreach ($resultados as $key => $value) {
+            if ($value > $max) {
+                $max = $value;
+                $ganador = $key;
+            }
+        }
+
+        $alcalde = ['cant' => $max, 'name' => $ganador];
+
+        // dd($resultados);
+
         return view('dashboard/index', [
             'titleHead' => 'Elecciones Panel',
+            'school' => $school,
+            'candidatos' => $candidatos,
+            'estudiantes' => $estudiantes,
+            'votos' => $votos,
+            // 'resultados' => $resultados,
+            'alcalde' => (object)$alcalde
         ]);
     }
 
-    public function create()
+    public function charts()
     {
-        //return view('folder/file', [
-        //   'var' => 'es una variable',
-        //]);
-    }
+        $id = session()->user()->school_id;
 
-    public function store()
-    {
-        $data = $this->request()->getInput();
+        $votos = Candidates::AllVotos($id);
 
-        // $valid = $this->validate($data, [
-        //     'name' => 'required',
-        // ]);
-        // if ($valid !== true) {
-        //     return back()->route('route.name', [
-        //         'err' =>  $valid,
-        //         'data' => $data,
-        //     ]);
-        // } else {
-        //     Model::create($data);
-        //     return redirect()->route('route.name');
-        // }
-    }
+        $resul = [];
+        foreach ($votos as $key => $value) {
+            array_push($resul, $value->fullname);
+        }
+        $resul2 = array_count_values($resul);
 
-    public function edit()
-    {
-        $id = $this->request()->getInput();
+        //array = [candidatos => [], votos => []]
+        $data = ['candidatos' => [], 'votos' => []];
 
-        // if (empty((array)$id)) {
-        //     $rol = null;
-        // } else {
-        //     $rol = Model::first($id->id);
-        // }
-        // return view('folder.file', [
-        //     'data' => $rol,
-        // ]);
-    }
+        foreach ($resul2 as $key => $value) {
+            array_push($data['candidatos'], $key);
+            array_push($data['votos'], $value);
+        }
 
-    public function update()
-    {
-        $data = $this->request()->getInput();
-        // $valid = $this->validate($data, [
-        //     'name' => 'required',
-        // ]);
+        $response = ['status' => false, 'data' => ''];
+        if (!empty($data)) {
+            $response['status'] = true;
+            $response['data'] = $data;
+        }
 
-        // if ($valid !== true) {
-        //     return back()->route('route.name', [
-        //         'err' =>  $valid,
-        //         'data' => $data,
-        //     ]);
-        // } else {
-        //     Model::update($data->id, $data);
-        //     return redirect()->route('route.name');
-        // }
-    }
-
-    public function destroy()
-    {
-        $data = $this->request()->getInput();
-        //$result = Model::delete((int)$data->id);
-        //return redirect()->route('route.name');
+        echo json_encode($response);
     }
 }

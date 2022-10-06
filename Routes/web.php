@@ -31,6 +31,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
 //dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/dashboard/charts', [DashboardController::class, 'charts'])->name('dashboard.charts');
 
 //roles
 Route::get('/roles', [RolController::class, 'index'])->name('roles.index');
