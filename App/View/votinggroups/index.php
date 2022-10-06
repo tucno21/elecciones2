@@ -41,6 +41,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Mesa N°</th>
                         <th scope="col">Miembros</th>
+                        <th scope="col">Imprimir</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -52,6 +53,11 @@
                             <td><?= $m->group_name ?></td>
 
                             <td> <a href="<?= route('members.index') . '?id=' . $m->id ?>" class="btn btn-outline-dark btn-sm">Mienbros de Mesa</a></td>
+
+                            <td>
+                                <a target="_blank" href=<?= route('votinggroups.pdf') . '?mesa=' . $m->group_name ?>" class="btn btn-outline-primary btn-sm"><i class="bi bi-file-pdf"></i>
+                                </a>
+                            </td>
 
                             <td>
                                 <a href=<?= route('votinggroups.destroy') . '?id=' . $m->id ?>" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash3"></i>

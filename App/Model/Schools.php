@@ -35,4 +35,10 @@ class Schools extends Model
      */
     protected static $createdField    = 'created_at';
     protected static $updatedField    = 'updated_at';
+
+    public static function school($id)
+    {
+        $sql = "SELECT * FROM `schools` WHERE `id` = $id";
+        return self::querySimple($sql);
+    }
 }

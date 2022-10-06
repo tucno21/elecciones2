@@ -107,4 +107,10 @@ class Students extends Model
 
         return $data;
     }
+
+    public static function getMembersGroup($votinggroup_id)
+    {
+        $sql = "SELECT id, fullname, dni FROM students  WHERE votinggroup_id = $votinggroup_id";
+        return self::querySimple($sql);
+    }
 }

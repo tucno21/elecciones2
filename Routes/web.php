@@ -76,6 +76,7 @@ Route::get('/votinggroups', [VotingGroupController::class, 'index'])->name('voti
 Route::get('/votinggroups/create', [VotingGroupController::class, 'create'])->name('votinggroups.create');
 Route::post('/votinggroups/create', [VotingGroupController::class, 'store']);
 Route::get('/votinggroups/destroy', [VotingGroupController::class, 'destroy'])->name('votinggroups.destroy');
+Route::get('/votinggroups/pdf', [VotingGroupController::class, 'pdf'])->name('votinggroups.pdf');
 
 //students
 Route::get('/students', [StudentController::class, 'index'])->name('students.index');
