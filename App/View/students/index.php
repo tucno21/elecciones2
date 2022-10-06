@@ -30,7 +30,6 @@
 
             <!-- BOTONES -->
             <div class="p-2 mb-2">
-                <a href="<?= route('students.create') ?>" class="btn btn-outline-dark btn-sm">Crear Usuario</a>
 
                 <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalExel">
                     <i class="mx-1 bi bi-file-earmark-excel"></i>
