@@ -26,6 +26,11 @@ class DashboardController extends Controller
         // dd(session()->user());
 
         $candidatos = Candidates::where('school_id', $id)->get();
+
+        if (is_object($candidatos)) {
+            $candidatos = [$candidatos];
+        }
+
         $estudiantes = Students::where('school_id', $id)->get();
 
         $votos = Candidates::AllVotos($id);
@@ -47,8 +52,6 @@ class DashboardController extends Controller
         }
 
         $alcalde = ['cant' => $max, 'name' => $ganador];
-
-        // dd($resultados);
 
         return view('dashboard/index', [
             'titleHead' => 'Elecciones Panel',
