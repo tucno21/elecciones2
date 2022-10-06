@@ -92,11 +92,9 @@ class DashboardController extends Controller
 
     public function excel()
     {
-        $query = "SELECT C.fullname, C.group_name, COUNT(E.candidate_id) maximo 
-        FROM candidates C 
-        INNER JOIN students E ON C.id = E.candidate_id 
-        GROUP BY candidate_id
-        ORDER BY maximo DESC";
+        $id = session()->user()->school_id;
+
+        $query = "SELECT C.fullname, C.group_name, COUNT(E.candidate_id) maximo FROM candidates C INNER JOIN students E ON C.id = E.candidate_id WHERE C.school_id = $id GROUP BY candidate_id ORDER BY maximo DESC";
 
         $resultados = Candidates::querySimple($query);
         // dd($resultados);
