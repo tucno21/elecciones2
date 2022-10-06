@@ -19,20 +19,21 @@
                     Agregar Miembro de mesa
                 </button>
             </div>
-
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Miembro</th>
-                        <th scope="col">DNI</th>
-                        <th scope="col">Nombre y Apellidos</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="mostrarMiembros">
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Miembro</th>
+                            <th scope="col">DNI</th>
+                            <th scope="col">Nombre y Apellidos</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mostrarMiembros">
+                    </tbody>
+                </table>
+            </div>
         </div>
 
     </div>

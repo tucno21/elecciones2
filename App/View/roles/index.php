@@ -12,36 +12,36 @@
             <div class="p-2 mb-2">
                 <a href="<?= route('roles.create') ?>" class="btn btn-outline-dark btn-sm">Crear Rol</a>
             </div>
-
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Rol</th>
-                        <th scope="col">Permisos</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($roles as $r) : ?>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <th scope="row"><?= $r->id ?></th>
-                            <td><?= $r->rol_name ?></td>
-
-                            <td><a href="<?= route('roles.permissions') . '?id=' . $r->id ?>" class="btn btn-outline-primary btn-sm"><i class="bi bi-key"></i></a></td>
-
-                            <td>
-                                <a href="<?= route('roles.edit') . '?id=' . $r->id ?>" class="btn btn-outline-warning btn-sm"><i class="bi bi-pencil"></i>
-                                </a>
-                                <a href=<?= route('roles.destroy') . '?id=' . $r->id ?>" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash3"></i>
-                                </a>
-                            </td>
+                            <th scope="col">#</th>
+                            <th scope="col">Rol</th>
+                            <th scope="col">Permisos</th>
+                            <th scope="col">Acciones</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($roles as $r) : ?>
+                            <tr>
+                                <th scope="row"><?= $r->id ?></th>
+                                <td><?= $r->rol_name ?></td>
 
-    </div>
+                                <td><a href="<?= route('roles.permissions') . '?id=' . $r->id ?>" class="btn btn-outline-primary btn-sm"><i class="bi bi-key"></i></a></td>
+
+                                <td>
+                                    <a href="<?= route('roles.edit') . '?id=' . $r->id ?>" class="btn btn-outline-warning btn-sm"><i class="bi bi-pencil"></i>
+                                    </a>
+                                    <a href=<?= route('roles.destroy') . '?id=' . $r->id ?>" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash3"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
 </main>
 <?php include ext('layoutDash.footer') ?>

@@ -13,30 +13,32 @@
                 <a href="<?= route('schools.create') ?>" class="btn btn-outline-dark btn-sm">Crear Institución</a>
             </div>
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Escuela</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($schools as $r) : ?>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <th scope="row"><?= $r->id ?></th>
-                            <td><?= $r->name ?></td>
-
-                            <td>
-                                <a href="<?= route('schools.edit') . '?id=' . $r->id ?>" class="btn btn-outline-warning btn-sm"><i class="bi bi-pencil"></i>
-                                </a>
-                                <a href=<?= route('schools.destroy') . '?id=' . $r->id ?>" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash3"></i>
-                                </a>
-                            </td>
+                            <th scope="col">#</th>
+                            <th scope="col">Escuela</th>
+                            <th scope="col">Acciones</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($schools as $r) : ?>
+                            <tr>
+                                <th scope="row"><?= $r->id ?></th>
+                                <td><?= $r->name ?></td>
+
+                                <td>
+                                    <a href="<?= route('schools.edit') . '?id=' . $r->id ?>" class="btn btn-outline-warning btn-sm"><i class="bi bi-pencil"></i>
+                                    </a>
+                                    <a href=<?= route('schools.destroy') . '?id=' . $r->id ?>" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash3"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
     </div>
