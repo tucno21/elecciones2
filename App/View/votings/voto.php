@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="<?= base_url('/assets/img/qricon.png') ?>" />
     <title><?= isset($title) ? $title : 'Voto Electrónico' ?></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="<?= base_url ?>/assets/plugins/bootstrap/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= base_url('/assets/css/icon/bootstrap-icons.css') ?>">
 
     <style>
@@ -179,9 +179,10 @@
         </footer>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="<?= base_url ?>/assets/plugins/bootstrap/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+    <script src="<?= base_url('/assets/js/sweetalert2.js') ?>"></script>
 
     <script>
         let btnCheck = document.querySelectorAll('.btn-check');
