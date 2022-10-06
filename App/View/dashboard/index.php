@@ -102,7 +102,7 @@
                             <h6 class="card-subtitle color-texto-muted">Diagrama de barras</h6>
                         </div>
                         <div class="">
-                            <a href="#" class="btn btn-dark btn-sm">Reporte Excel</a>
+                            <a href="<?= route('dashboard.excel') ?>" class="btn btn-dark btn-sm">Reporte Excel</a>
                         </div>
                     </div>
 
@@ -126,7 +126,7 @@
                             <h6 class="card-subtitle color-texto-muted">Gráfico circular</h6>
                         </div>
                         <div class="">
-                            <a href="" class="btn btn-dark btn-sm">Reporte Excel</a>
+                            <a href="<?= route('dashboard.excel') ?>" class="btn btn-dark btn-sm">Reporte Excel</a>
                         </div>
                     </div>
                     <div class="card-body">

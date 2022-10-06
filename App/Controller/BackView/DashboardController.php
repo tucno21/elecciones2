@@ -6,6 +6,8 @@ use App\Model\Schools;
 use System\Controller;
 use App\Model\Students;
 use App\Model\Candidates;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class DashboardController extends Controller
 {
@@ -86,5 +88,49 @@ class DashboardController extends Controller
         }
 
         echo json_encode($response);
+    }
+
+    public function excel()
+    {
+        $query = "SELECT C.fullname, C.group_name, COUNT(E.candidate_id) maximo 
+        FROM candidates C 
+        INNER JOIN students E ON C.id = E.candidate_id 
+        GROUP BY candidate_id
+        ORDER BY maximo DESC";
+
+        $resultados = Candidates::querySimple($query);
+        // dd($resultados);
+
+        $excel = new Spreadsheet();
+        $hojaActiva = $excel->getActiveSheet();
+        $hojaActiva->setTitle('resultados_voto_electoral');
+        $hojaActiva->getTabColor()->setRGB('FF0000');
+
+        $hojaActiva->getColumnDimension('A')->setWidth(5);
+        $hojaActiva->setCellValue('A1', 'N');
+        $hojaActiva->getColumnDimension('B')->setWidth(30);
+        $hojaActiva->setCellValue('B1', 'NOMBRE GRUPO');
+        $hojaActiva->getColumnDimension('C')->setWidth(30);
+        $hojaActiva->setCellValue('C1', 'NOMBRE CANDIDATO');
+        $hojaActiva->getColumnDimension('D')->setWidth(8);
+        $hojaActiva->setCellValue('D1', 'VOTOS TOTAL');
+
+
+        $fila = 2;
+        foreach ($resultados as $value) {
+            $hojaActiva->setCellValue('A' . $fila, $fila - 1);
+            $hojaActiva->setCellValue('B' . $fila, $value->group_name);
+            $hojaActiva->setCellValue('C' . $fila, $value->fullname);
+            $hojaActiva->setCellValue('D' . $fila, $value->maximo);
+            $fila++;
+        }
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="resultados.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer = IOFactory::createWriter($excel, 'Xlsx');
+        $writer->save('php://output');
+        exit;
     }
 }
