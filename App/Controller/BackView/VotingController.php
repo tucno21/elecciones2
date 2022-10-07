@@ -147,6 +147,14 @@ class VotingController extends Controller
 
     public function close()
     {
+        $president =  session()->user();
+        $fecha = StartVoting::where('student_id', $president->id)->first();
+
+        if ($fecha->date_end === null) {
+            $data['date_end'] = date('Y-m-d H:i:s');
+            StartVoting::update($fecha->id, $data);
+        }
+
         session()->flush();
         return redirect()->route('login.index');
     }
