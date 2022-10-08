@@ -296,7 +296,7 @@ class ActaController extends Controller
         // $pdf->Image($rutaEscudo, 20, 10, 18);
         $pdf->Image($rutaOnpe, 20, 10, 40);
 
-        $pdf->Output('I', 'CodigoIdentidad.pdf');
+        $pdf->Output('I', "Acta-$mesa->group_name.pdf");
 
         // return redirect()->route('actas.index');
         dd($data->mesa);
@@ -306,23 +306,49 @@ class ActaController extends Controller
         //]);
     }
 
-    public function store()
+    public function mesas()
     {
-        $data = $this->request()->getInput();
-        dd($data);
+        $user = session()->user();
 
-        // $valid = $this->validate($data, [
-        //     'name' => 'required',
-        // ]);
-        // if ($valid !== true) {
-        //     return back()->route('route.name', [
-        //         'err' =>  $valid,
-        //         'data' => $data,
-        //     ]);
-        // } else {
-        //     Model::create($data);
-        //     return redirect()->route('route.name');
-        // }
+        $mesas = VotingGroups::where('school_id', $user->school_id)->get();
+        if (is_object($mesas)) {
+            $mesas = [$mesas];
+        }
+
+        //SCHOOLS ================================================
+        $query = "SELECT * FROM schools WHERE id = $user->school_id";
+        $school = Schools::querySimple($query);
+
+        // $school = Schools::where('id', $user->school_id)->get();
+        $rutaLogo = DIR_IMG  . $school->photo;
+        $rutaEscudo = DIR_IMG . 'escudo.png';
+        $rutaOnpe = DIR_IMG . 'onpe.png';
+
+
+        // dd($school);
+        $pdf = new FPDF('L', 'mm', 'A4');
+
+        //
+        foreach ($mesas as $mesa) {
+            $pdf->AddPage();
+            $pdf->cell(0, 8, utf8_decode(''), 0, 1, 'C');
+            $pdf->SetFont('Arial', 'B', 45);
+            $pdf->cell(0, 10, utf8_decode('Mesa de votación'), 0, 1, 'C');
+            $pdf->SetFont('Arial', 'B', 14);
+            $pdf->cell(0, 10, utf8_decode('INSTITUCIÓN EDUCATIVA ' . strtoupper($school->name)), 0, 1, 'C');
+            $pdf->SetFont('Arial', '', 14);
+            $pdf->cell(0, 6, utf8_decode($school->message), 0, 1, 'C');
+            $pdf->SetFont('Arial', 'B', 120);
+            $pdf->cell(0, 130, utf8_decode('N° ' . $mesa->group_name), '', 1, 'C');
+            $pdf->SetFont('Arial', 'B', 12);
+            $pdf->cell(0, 10, utf8_decode('Voto Electrónico ' . date('Y')), '', 1, 'C');
+            //logos
+            $pdf->Image($rutaOnpe, 10, 10, 80);
+            $pdf->Image($rutaLogo, 230, 10, 35);
+        }
+
+        $pdf->Output('I', 'Mesas-aula.pdf');
+        // dd($mesas);
     }
 
     public function edit()

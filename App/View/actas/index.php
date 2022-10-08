@@ -33,6 +33,7 @@
 
 
         <div class="row">
+            <!-- ACTAS -->
             <div class="col-md-6 mb-2">
                 <div class="card border border-info border-4 border-top-0 border-end-0 border-bottom-0  shadow h-100 p-3">
                     <div class="card-body">
@@ -42,13 +43,13 @@
                     </div>
                 </div>
             </div>
-
+            <!-- MESAS -->
             <div class="col-md-6 mb-2">
                 <div class="card border border-warning border-4 border-top-0 border-end-0 border-bottom-0  shadow h-100 py-2">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Cartel de Mesas</h5>
+                        <p class="card-text">Generar cartel enumerado de las mesas para pegar en la entrada del aula</p>
+                        <a href="<?= route('actas.mesas') ?>" target="_blank" class="btn btn-warning">Mesas<i class="mx-2 bi bi-file-earmark-pdf"></i></a>
                     </div>
                 </div>
             </div>
