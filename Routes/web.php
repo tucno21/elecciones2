@@ -4,6 +4,7 @@ use System\Route;
 use App\Controller\Auth\LoginController;
 use App\Controller\BackView\QrController;
 use App\Controller\BackView\RolController;
+use App\Controller\BackView\ActaController;
 use App\Controller\BackView\UserController;
 use App\Controller\BackView\MemberController;
 use App\Controller\BackView\SchoolController;
@@ -136,3 +137,8 @@ Route::get('/votings/studentvoto', [VotingController::class, 'candidate'])->name
 Route::post('/votings/studentvoto', [VotingController::class, 'candidatePost']);
 
 Route::get('/votings/close', [VotingController::class, 'close'])->name('votings.close');
+
+//ACTAS
+Route::get('/actas', [ActaController::class, 'index'])->name('actas.index');
+Route::get('/actas/create', [ActaController::class, 'create'])->name('actas.create');
+Route::post('/actas/create', [ActaController::class, 'store']);

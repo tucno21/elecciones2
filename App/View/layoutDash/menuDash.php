@@ -89,6 +89,12 @@ $linksSidebar = [
         'url'  => route('candidates.index'),
         'icon' => 'bi bi-person-workspace',
     ],
+    [
+        'mode' => 'menu',
+        'text' => 'Actas',
+        'url'  => route('actas.index'),
+        'icon' => 'bi bi-file-earmark-pdf',
+    ],
 ];
 
 
