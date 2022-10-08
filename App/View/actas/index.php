@@ -53,33 +53,53 @@
                     </div>
                 </div>
             </div>
-
+            <!-- lista de entrada -->
             <div class="col-md-6 mb-2">
                 <div class="card border border-success border-4 border-top-0 border-end-0 border-bottom-0  shadow h-100 py-2">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Relación de Electores (ENTRADA)</h5>
+                        <p class="card-text">Descargar lista de los electores para ser pegado en la entrada del aula de votación.</p>
+                        <a href="#" class="btn btn-success">Generar<i class="mx-2 bi bi-file-earmark-pdf"></i></a>
                     </div>
                 </div>
             </div>
-
+            <!-- lista para mesa -->
             <div class="col-md-6 mb-2">
                 <div class="card border border-danger border-4 border-top-0 border-end-0 border-bottom-0  shadow h-100 py-2">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title">Relación de Electores (MESA)</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="#" class="btn btn-danger">Generar<i class="mx-2 bi bi-file-earmark-pdf"></i></a>
                     </div>
                 </div>
             </div>
-
+            <!-- Acta de Proclamación -->
+            <div class="col-md-6 mb-2">
+                <div class="card border border-primary border-4 border-top-0 border-end-0 border-bottom-0  shadow h-100 py-2">
+                    <div class="card-body">
+                        <h5 class="card-title">Acta de Proclamación</h5>
+                        <p class="card-text">Es un modelo de acta de proclamación en archivo word para modificar con los datos generados con los resultados del voto electrónico.</p>
+                        <a href="#" class="btn btn-primary">Descargar<i class="mx-2 bi bi-file-earmark-word"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Generar credencial -->
+            <div class="col-md-6 mb-2">
+                <div class="card border border-dark border-4 border-top-0 border-end-0 border-bottom-0  shadow h-100 py-2">
+                    <div class="card-body">
+                        <h5 class="card-title">Generar Credenciales</h5>
+                        <p class="card-text">Generar Credenciales para los ganadores del Municipio Escolar y ser entregado en acto protocolar.</p>
+                        <a href="#" class="btn btn-dark">Descargar<i class="mx-2 bi bi-file-earmark-pdf"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- datos finales -->
             <div class="col-md-6 mb-2">
                 <div class="card border border-info border-4 border-top-0 border-end-0 border-bottom-0  shadow h-100 py-2">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Diveros archivos</h5>
+                        <p class="card-text">Descargar archivos divesos como fuente de apoyo para relalizar las elecciones municipales Escolares.</p>
+                        <a href="#" class="btn btn-info">Descargar<i class="mx-2 bi bi-file-earmark-zip"></i></a>
                     </div>
                 </div>
             </div>
