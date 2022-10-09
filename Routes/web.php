@@ -145,3 +145,4 @@ Route::post('/actas/create', [ActaController::class, 'store']);
 Route::get('/actas/cartelmesas', [ActaController::class, 'mesas'])->name('actas.mesas');
 Route::get('/actas/wordproclamacion', [ActaController::class, 'wordproclamacion'])->name('actas.wordproclamacion');
 Route::get('/actas/credencial', [ActaController::class, 'credencial'])->name('actas.credencial');
+Route::get('/actas/material', [ActaController::class, 'material'])->name('actas.material');

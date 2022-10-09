@@ -99,7 +99,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Diveros archivos</h5>
                         <p class="card-text">Descargar archivos divesos como fuente de apoyo para relalizar las elecciones municipales Escolares.</p>
-                        <a href="#" class="btn btn-info">Descargar<i class="mx-2 bi bi-file-earmark-zip"></i></a>
+                        <a href="<?= route('actas.material') ?>" class="btn btn-info">Descargar<i class="mx-2 bi bi-file-earmark-zip"></i></a>
                     </div>
                 </div>
             </div>

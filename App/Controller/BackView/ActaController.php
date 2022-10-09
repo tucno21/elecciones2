@@ -425,10 +425,20 @@ class ActaController extends Controller
         $pdf->Output('I', 'Credencial.pdf');
     }
 
-    public function destroy()
+    public function material()
     {
-        $data = $this->request()->getInput();
-        //$result = Model::delete((int)$data->id);
-        //return redirect()->route('route.name');
+        //materialElecciones.zip
+
+        $material = DIR_IMG . 'materialElecciones.zip';
+        //descargar el archivo
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename=' . basename($material));
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($material));
+        readfile($material);
+        exit;
     }
 }
