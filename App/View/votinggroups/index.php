@@ -8,6 +8,9 @@
 
 
         <div class="row px-3">
+            <div class="col-12">
+                <p>Recuerde primero crear las mesas de sufragio antes de Ingresar los estudiantes, si por algun genera nuevas mesas los estudiantes seran eliminados y tendra que cargar de nuevo</p>
+            </div>
 
             <div class="p-2 mb-2 col-md-4">
                 <form action="<?= route('votinggroups.create') ?>" method="POST">
@@ -53,7 +56,7 @@
                                 <th scope="row"><?= $i ?></th>
                                 <td><?= $m->group_name ?></td>
 
-                                <td> <a href="<?= route('members.index') . '?id=' . $m->id ?>" class="btn btn-outline-dark btn-sm">Mienbros de Mesa</a></td>
+                                <td> <a href="<?= route('members.index') . '?id=' . $m->id ?>" class="btn btn-outline-dark btn-sm">Miembros de Mesa</a></td>
 
                                 <td>
                                     <a target="_blank" href=<?= route('votinggroups.pdfWall') . '?mesa=' . $m->group_name ?>" class="btn btn-outline-primary btn-sm"><i class="bi bi-file-pdf"></i>
