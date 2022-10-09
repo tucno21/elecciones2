@@ -190,4 +190,32 @@ class SchoolController extends Controller
             'school' => $school,
         ]);
     }
+
+    public function createadmin()
+    {
+        return view('schools/createadmin', [
+            'titleHead' => 'Crear Institución',
+        ]);
+    }
+
+    public function storeadmin()
+    {
+        $data = $this->request()->getInput();
+        // dd($data);
+
+        $valid = $this->validate($data, [
+            'name' => 'required|alpha_space|min:3|max:50',
+        ]);
+        if ($valid !== true) {
+            $data->photo = null;
+            return back()->route('schools.createadmin', [
+                'err' =>  $valid,
+                'data' => $data,
+            ]);
+        } else {
+            $result =  Schools::create($data);
+
+            return redirect()->route('schools.index');
+        }
+    }
 }

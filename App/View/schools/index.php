@@ -10,7 +10,7 @@
         <div class="row px-3">
 
             <div class="p-2 mb-2">
-                <a href="<?= route('schools.create') ?>" class="btn btn-outline-dark btn-sm">Crear Institución</a>
+                <a href="<?= route('schools.createadmin') ?>" class="btn btn-outline-dark btn-sm">Crear Institución</a>
             </div>
 
             <div class="table-responsive">

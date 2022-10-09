@@ -59,6 +59,8 @@ Route::get('/schools/edit', [SchoolController::class, 'edit'])->name('schools.ed
 Route::post('/schools/edit', [SchoolController::class, 'update']);
 Route::get('/schools/destroy', [SchoolController::class, 'destroy'])->name('schools.destroy');
 Route::get('/myschool', [SchoolController::class, 'myschool'])->name('schools.myschool');
+Route::get('/schools/createadmin', [SchoolController::class, 'createadmin'])->name('schools.createadmin');
+Route::post('/schools/createadmin', [SchoolController::class, 'storeadmin']);
 
 //usuarios
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
