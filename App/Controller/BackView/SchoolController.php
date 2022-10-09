@@ -47,7 +47,7 @@ class SchoolController extends Controller
             'name' => 'required|alpha_space|min:3|max:50',
             'color' => 'required',
             'colorletter' => 'required',
-            'date' => 'required',
+            // 'date' => 'required',
             'message' => 'required|alpha_space|min:3|max:100',
             'photo' => 'requiredFile',
         ]);
@@ -75,8 +75,8 @@ class SchoolController extends Controller
             } else {
                 $data->photo = null;
             }
-            $newDate = implode('-', array_reverse(explode('-', $data->date)));
-            $data->date =  $newDate;
+            // $newDate = implode('-', array_reverse(explode('-', $data->date)));
+            // $data->date =  $newDate;
 
             $result =  Schools::create($data);
 
@@ -107,7 +107,7 @@ class SchoolController extends Controller
             'name' => 'required|alpha_space|min:3|max:50',
             'color' => 'required',
             'colorletter' => 'required',
-            'date' => 'required',
+            // 'date' => 'required',
             'message' => 'required|alpha_space|min:3|max:100',
             'photo' => 'requiredFile',
             'codigo_modular' => 'required|integer|between:7,7',
@@ -147,8 +147,8 @@ class SchoolController extends Controller
                 $data->photo = null;
             }
 
-            $newDate = implode('-', array_reverse(explode('-', $data->date)));
-            $data->date =  $newDate;
+            // $newDate = implode('-', array_reverse(explode('-', $data->date)));
+            // $data->date =  $newDate;
 
             Schools::update($data->id, $data);
 

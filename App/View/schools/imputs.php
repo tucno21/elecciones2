@@ -48,18 +48,6 @@
         <?php endif; ?>
     </div>
 </div>
-<!-- Fecha -->
-<div class="mb-3">
-    <div class="input-group input-group-sm ">
-        <spam class="input-group-text"><i class="bi bi-calendar-date"></i></spam>
-        <input type="text" class="form-control <?= isset($err->date) ? 'is-invalid' : '' ?>" name="date" placeholder="Año de elección" value="<?= isset($data->date) ? $data->date : '' ?>" id="fechaElectoral">
-        <?php if (isset($err->date)) : ?>
-            <div class="invalid-feedback">
-                <?= $err->date ?>
-            </div>
-        <?php endif; ?>
-    </div>
-</div>
 <!-- message -->
 <div class="mb-3">
     <div class="input-group input-group-sm ">
