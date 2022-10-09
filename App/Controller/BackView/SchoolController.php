@@ -109,7 +109,7 @@ class SchoolController extends Controller
             'colorletter' => 'required',
             'date' => 'required',
             'message' => 'required|alpha_space|min:3|max:100',
-            // 'photo' => 'requiredFile',
+            'photo' => 'requiredFile',
             'codigo_modular' => 'required|integer|between:7,7',
         ]);
 
