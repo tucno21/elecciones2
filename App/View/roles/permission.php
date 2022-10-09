@@ -21,31 +21,15 @@
 
                         <div class="row">
 
-                            <div class="mb-3 border col-md-4 mx-2">
-                                <label class="small fw-500 mb-1 fs-5">Dashboard</label>
-                                <?php foreach ($permissions as $p) : ?>
-                                    <?php if (strpos($p->per_name, "dashboard") !== false) : ?>
-                                        <div class="form-check">
-                                            <input class="form-check-input" id="<?= $p->id ?>" type="checkbox" name="<?= $p->per_name ?>" value="<?= $p->id ?>" id="<?= $p->id ?>" <?= in_array($p->per_name, array_column((array)$permisosRol, 'per_name')) ? 'checked' : '' ?>>
-                                            <label class="form-check-label" for="<?= $p->id ?>">
-                                                <?= $p->description ?>
-                                            </label>
-                                        </div>
-                                    <?php endif ?>
-                                <?php endforeach; ?>
-                            </div>
+                            <div class="mb-3 border col mx-2">
 
-                            <div class="mb-3 border col-md-4 mx-2">
-                                <label class="small fw-500 mb-1 fs-5">Roles</label>
                                 <?php foreach ($permissions as $p) : ?>
-                                    <?php if (strpos($p->per_name, "roles") !== false) : ?>
-                                        <div class="form-check">
-                                            <input class="form-check-input" id="<?= $p->id ?>" type="checkbox" name="<?= $p->per_name ?>" value="<?= $p->id ?>" id="<?= $p->id ?>" <?= in_array($p->per_name, array_column((array)$permisosRol, 'per_name')) ? 'checked' : '' ?>>
-                                            <label class="form-check-label" for="<?= $p->id ?>">
-                                                <?= $p->description ?>
-                                            </label>
-                                        </div>
-                                    <?php endif ?>
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="<?= $p->id ?>" type="checkbox" name="<?= $p->per_name ?>" value="<?= $p->id ?>" id="<?= $p->id ?>" <?= in_array($p->per_name, array_column((array)$permisosRol, 'per_name')) ? 'checked' : '' ?>>
+                                        <label class="form-check-label" for="<?= $p->id ?>">
+                                            <?= $p->description ?>
+                                        </label>
+                                    </div>
                                 <?php endforeach; ?>
                             </div>
 
