@@ -89,6 +89,10 @@ class VotingGroupController extends Controller
     public function pdf()
     {
         $data = $this->request()->getInput();
+        if ($data->mesa == '') {
+            session()->flash('errordata', 'No ha seleccionado ninguna mesa');
+            return redirect()->route('actas.index');
+        }
 
         $mesa = VotingGroups::where('group_name', $data->mesa)->get();
 
@@ -123,6 +127,10 @@ class VotingGroupController extends Controller
     public function pdfWall()
     {
         $data = $this->request()->getInput();
+        if ($data->mesa == '') {
+            session()->flash('errordata', 'No ha seleccionado ninguna mesa');
+            return redirect()->route('actas.index');
+        }
 
         $mesa = VotingGroups::where('group_name', $data->mesa)->get();
 

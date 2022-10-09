@@ -59,7 +59,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Relación de Electores (ENTRADA)</h5>
                         <p class="card-text">Descargar lista de los electores para ser pegado en la entrada del aula de votación.</p>
-                        <a href="#" class="btn btn-success">Generar<i class="mx-2 bi bi-file-earmark-pdf"></i></a>
+                        <button data-bs-toggle="modal" data-bs-target="#relacionEntrada" class="btn btn-success">Generar <i class="mx-2 bi bi-file-earmark-pdf"></i></button>
                     </div>
                 </div>
             </div>
@@ -68,8 +68,8 @@
                 <div class="card border border-danger border-4 border-top-0 border-end-0 border-bottom-0  shadow h-100 py-2">
                     <div class="card-body">
                         <h5 class="card-title">Relación de Electores (MESA)</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-danger">Generar<i class="mx-2 bi bi-file-earmark-pdf"></i></a>
+                        <p class="card-text">Descargar lista de los electores para usado en control de mesa del aula de votación.</p>
+                        <button data-bs-toggle="modal" data-bs-target="#relacionMesa" class="btn btn-danger">Generar <i class="mx-2 bi bi-file-earmark-pdf"></i></button>
                     </div>
                 </div>
             </div>
@@ -138,6 +138,62 @@
         </div>
     </div>
 </div>
+<!-- Modal relacion entrada-->
+<div class="modal fade" id="relacionEntrada" tabindex="-1" aria-labelledby="relacionEntradaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="relacionEntradaLabel">Relación de Electores (ENTRADA)</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Selecciones la mesa de votación para generar relación de electores.
+                <div class="input-group my-3 px-3">
+                    <label class="input-group-text" for="inputGroupSelect02"><i class="bi bi-list-columns-reverse"></i></label>
+                    <select class="form-select" id="inputGroupSelect02" name="mesa">
+                        <option value="">Seleccione..</option>
+                        <?php foreach ($mesas as $mesa) : ?>
+                            <option value="<?= $mesa->group_name ?>"><?= $mesa->group_name ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a href="" class="btn btn-primary" id="bottonrelacionentrada">Generar</a>
+                <!-- <button type="button" class="btn btn-primary" id="bottonmesa">Generar</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal relacion mesa-->
+<div class="modal fade" id="relacionMesa" tabindex="-1" aria-labelledby="relacionMesaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="relacionMesaLabel">Relación de Electores (MESA)</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Selecciones la mesa de votación para generar relación de electores.
+                <div class="input-group my-3 px-3">
+                    <label class="input-group-text" for="inputGroupSelect03"><i class="bi bi-list-columns-reverse"></i></label>
+                    <select class="form-select" id="inputGroupSelect03" name="mesa">
+                        <option value="">Seleccione..</option>
+                        <?php foreach ($mesas as $mesa) : ?>
+                            <option value="<?= $mesa->group_name ?>"><?= $mesa->group_name ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a href="" class="btn btn-primary" id="bottonrelacionMesa">Generar</a>
+                <!-- <button type="button" class="btn btn-primary" id="bottonmesa">Generar</button> -->
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php include ext('layoutDash.footer') ?>
 
@@ -150,18 +206,51 @@
         toastList.forEach(toast => toast.show());
     }
 
+    //generar actas
     let select = document.getElementById('inputGroupSelect01');
     let button = document.getElementById('bottonmesa');
-
     select.addEventListener('change', function() {
         if (select.value != '') {
             //add target="_blank"
             button.setAttribute('target', '_blank"');
             button.href = "<?= route('actas.create') ?>" + '?mesa=' + select.value;
         } else {
+            button.removeAttribute('target');
             button.href = "<?= route('actas.create') ?>" + '?mesa=' + select.value;
         }
     });
-
     button.href = "<?= route('actas.create') ?>" + '?mesa=';
+
+
+    //generar relacion entrada
+    let select2 = document.getElementById('inputGroupSelect02');
+    let button2 = document.getElementById('bottonrelacionentrada');
+    select2.addEventListener('change', function() {
+        if (select2.value != '') {
+            //add target="_blank"
+            button2.setAttribute('target', '_blank"');
+            button2.href = "<?= route('votinggroups.pdfWall') ?>" + '?mesa=' + select2.value;
+        } else {
+            //elimanr target="_blank"
+            button2.removeAttribute('target');
+            button2.href = "<?= route('votinggroups.pdfWall') ?>" + '?mesa=' + select2.value;
+        }
+    });
+    button2.href = "<?= route('votinggroups.pdfWall') ?>" + '?mesa=';
+
+    //generar relacion mesa
+    let select3 = document.getElementById('inputGroupSelect03');
+    let button3 = document.getElementById('bottonrelacionMesa');
+    select3.addEventListener('change', function() {
+        if (select3.value != '') {
+            //add target="_blank"
+            button3.setAttribute('target', '_blank"');
+            button3.href = "<?= route('votinggroups.pdf') ?>" + '?mesa=' + select3.value;
+        } else {
+            //elimanr target="_blank"
+            button3.removeAttribute('target');
+            button3.href = "<?= route('votinggroups.pdf') ?>" + '?mesa=' + select3.value;
+        }
+    });
+    button3.href = "<?= route('votinggroups.pdf') ?>" + '?mesa=';
 </script>

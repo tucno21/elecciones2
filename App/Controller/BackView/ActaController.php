@@ -10,6 +10,7 @@ use App\Model\Candidates;
 use App\Library\FPDF\FPDF;
 use App\Model\StartVoting;
 use App\Model\VotingGroups;
+use App\Library\PdfList\PdfList;
 
 class ActaController extends Controller
 {
@@ -351,18 +352,8 @@ class ActaController extends Controller
         // dd($mesas);
     }
 
-    public function edit()
+    public function  pdfWall()
     {
-        $id = $this->request()->getInput();
-
-        // if (empty((array)$id)) {
-        //     $rol = null;
-        // } else {
-        //     $rol = Model::first($id->id);
-        // }
-        // return view('folder.file', [
-        //     'data' => $rol,
-        // ]);
     }
 
     public function update()
