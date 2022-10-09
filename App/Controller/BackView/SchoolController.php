@@ -62,7 +62,7 @@ class SchoolController extends Controller
                 //generar nombre unico para la imagen
                 $namePhoto = md5(uniqid(rand(), true)) . '.png';
                 //modificar imagen
-                $imagePhoto = Image::make($data->photo['tmp_name'])->fit(200, 200);
+                $imagePhoto = Image::make($data->photo['tmp_name'])->widen(200);
                 //agregar al objeto
                 $data->photo = $namePhoto;
 
@@ -125,7 +125,7 @@ class SchoolController extends Controller
                 //generar nombre unico para la imagen
                 $namePhoto = md5(uniqid(rand(), true)) . '.png';
                 //modificar imagen
-                $imagePhoto = Image::make($data->photo['tmp_name'])->fit(200, 200);
+                $imagePhoto = Image::make($data->photo['tmp_name'])->widen(200);
                 //agregar al objeto
                 $data->photo = $namePhoto;
 
