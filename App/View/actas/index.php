@@ -1,48 +1,24 @@
 <?php include ext('layoutDash.head') ?>
 <main>
-    <!-- Main page content-->
+    <!-- //mensage session flash -->
+    <?php if (session()->has('errordata')) : ?>
+        <div class="toast-container position-fixed top-0 end-0 p-3">
+            <div class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <?= session()->get('errordata') ?>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+    <!-- MATERIALES-->
     <div class="container-xl px-4">
-        <h2 class="mt-2 mb-0">ACTAS ELECTORALES</h2>
+        <h2 class="mt-2 mb-0">MATERIALES ELECTORALES</h2>
         <hr class="mt-0 mb-4" />
 
-        <!-- //mensage session flash -->
-        <?php if (session()->has('errordata')) : ?>
-            <div class="toast-container position-fixed top-0 end-0 p-3">
-                <div class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="d-flex">
-                        <div class="toast-body">
-                            <?= session()->get('errordata') ?>
-                        </div>
-                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                </div>
-            </div>
-        <?php endif; ?>
-        <?php if (session()->has('successData')) : ?>
-            <div class="toast-container position-fixed top-0 end-0 p-3">
-                <div class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="d-flex">
-                        <div class="toast-body">
-                            <?= session()->get('successData') ?>
-                        </div>
-                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                </div>
-            </div>
-        <?php endif; ?>
-
-
         <div class="row">
-            <!-- ACTAS -->
-            <div class="col-md-6 mb-2">
-                <div class="card border border-info border-4 border-top-0 border-end-0 border-bottom-0  shadow h-100 p-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Descargar Actas Electorales</h5>
-                        <p class="card-text">Una ves que concluya el voto electronico puede descargar las actas electorales.</p>
-                        <button data-bs-toggle="modal" data-bs-target="#modelactas" class="btn btn-info">Generar <i class="mx-2 bi bi-file-earmark-pdf"></i></button>
-                    </div>
-                </div>
-            </div>
             <!-- MESAS -->
             <div class="col-md-6 mb-2">
                 <div class="card border border-warning border-4 border-top-0 border-end-0 border-bottom-0  shadow h-100 py-2">
@@ -73,6 +49,38 @@
                     </div>
                 </div>
             </div>
+
+            <!-- datos finales -->
+            <div class="col-md-6 mb-2">
+                <div class="card border border-info border-4 border-top-0 border-end-0 border-bottom-0  shadow h-100 py-2">
+                    <div class="card-body">
+                        <h5 class="card-title">Diversos archivos</h5>
+                        <p class="card-text">Descargar archivos divesos como fuente de apoyo para relalizar las elecciones municipales Escolares.</p>
+                        <a href="<?= route('actas.material') ?>" class="btn btn-info">Descargar<i class="mx-2 bi bi-file-earmark-zip"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ACTAS-->
+    <div class="container-xl px-4 mt-3">
+        <h2 class="mt-2 mb-0">ACTAS ELECTORALES</h2>
+        <hr class="mt-0 mb-4" />
+
+        <div class="row">
+            <!-- ACTAS -->
+            <div class="col-md-6 mb-2">
+                <div class="card border border-info border-4 border-top-0 border-end-0 border-bottom-0  shadow h-100 p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Descargar Actas Electorales</h5>
+                        <p class="card-text">Una ves que concluya el voto electronico puede descargar las actas electorales.</p>
+                        <button data-bs-toggle="modal" data-bs-target="#modelactas" class="btn btn-info">Generar <i class="mx-2 bi bi-file-earmark-pdf"></i></button>
+                    </div>
+                </div>
+            </div>
             <!-- Acta de Proclamación -->
             <div class="col-md-6 mb-2">
                 <div class="card border border-primary border-4 border-top-0 border-end-0 border-bottom-0  shadow h-100 py-2">
@@ -93,17 +101,6 @@
                     </div>
                 </div>
             </div>
-            <!-- datos finales -->
-            <div class="col-md-6 mb-2">
-                <div class="card border border-info border-4 border-top-0 border-end-0 border-bottom-0  shadow h-100 py-2">
-                    <div class="card-body">
-                        <h5 class="card-title">Diveros archivos</h5>
-                        <p class="card-text">Descargar archivos divesos como fuente de apoyo para relalizar las elecciones municipales Escolares.</p>
-                        <a href="<?= route('actas.material') ?>" class="btn btn-info">Descargar<i class="mx-2 bi bi-file-earmark-zip"></i></a>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
     </div>

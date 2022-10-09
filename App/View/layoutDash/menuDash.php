@@ -91,7 +91,7 @@ $linksSidebar = [
     ],
     [
         'mode' => 'menu',
-        'text' => 'Actas',
+        'text' => 'Materiales y Actas',
         'url'  => route('actas.index'),
         'icon' => 'bi bi-file-earmark-pdf',
     ],
