@@ -352,8 +352,22 @@ class ActaController extends Controller
         // dd($mesas);
     }
 
-    public function  pdfWall()
+    public function  wordproclamacion()
     {
+        //Acta_proclamacion.docx
+
+        $acta = DIR_IMG . 'Acta_proclamacion.docx';
+        //descargar el archivo
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename=' . basename($acta));
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($acta));
+        readfile($acta);
+        exit;
+        // dd($acta);
     }
 
     public function update()

@@ -79,7 +79,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Acta de Proclamación</h5>
                         <p class="card-text">Es un modelo de acta de proclamación en archivo word para modificar con los datos generados con los resultados del voto electrónico.</p>
-                        <a href="#" class="btn btn-primary">Descargar<i class="mx-2 bi bi-file-earmark-word"></i></a>
+                        <a href="<?= route('actas.wordproclamacion') ?>" class="btn btn-primary">Descargar<i class="mx-2 bi bi-file-earmark-word"></i></a>
                     </div>
                 </div>
             </div>

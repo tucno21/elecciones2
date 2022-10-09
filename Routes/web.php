@@ -143,4 +143,4 @@ Route::get('/actas', [ActaController::class, 'index'])->name('actas.index');
 Route::get('/actas/create', [ActaController::class, 'create'])->name('actas.create');
 Route::post('/actas/create', [ActaController::class, 'store']);
 Route::get('/actas/cartelmesas', [ActaController::class, 'mesas'])->name('actas.mesas');
-Route::get('/actas/pdfWall', [ActaController::class, 'pdfWall'])->name('actas.pdfWall');
+Route::get('/actas/wordproclamacion', [ActaController::class, 'wordproclamacion'])->name('actas.wordproclamacion');
