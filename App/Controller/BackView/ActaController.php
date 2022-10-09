@@ -370,22 +370,59 @@ class ActaController extends Controller
         // dd($acta);
     }
 
-    public function update()
+    public function credencial()
     {
         $data = $this->request()->getInput();
-        // $valid = $this->validate($data, [
-        //     'name' => 'required',
-        // ]);
 
-        // if ($valid !== true) {
-        //     return back()->route('route.name', [
-        //         'err' =>  $valid,
-        //         'data' => $data,
-        //     ]);
-        // } else {
-        //     Model::update($data->id, $data);
-        //     return redirect()->route('route.name');
-        // }
+        if ($data->nameStudent == '' || $data->cargo == '' || $data->fecha == '') {
+            session()->flash('errordata', 'no ha ingresado uno o mas datos, no se puede generar la credencial');
+            return redirect()->route('actas.index');
+        }
+
+        $user = session()->user();
+
+        $school = Schools::school($user->school_id);
+        $rutaLogo = DIR_IMG  . $school->photo;
+        $rutaEscudo = DIR_IMG . 'escudo.png';
+        $rutaOnpe = DIR_IMG . 'onpe.png';
+        $credencial = DIR_IMG . 'credencial.png';
+
+        //fecha
+        $fechaDia = date('d', strtotime($data->fecha));
+        $fechaMes = Mes::data(date('m', strtotime($data->fecha)));
+        $fechaAnio = date('Y', strtotime($data->fecha));
+        //año siguiente
+        $fechaAnioSiguiente = date('Y', strtotime($data->fecha . '+ 1 year'));
+
+        $fecha = "$fechaDia de $fechaMes del $fechaAnio";
+
+        $pdf = new FPDF('L', 'mm', 'A4');
+        $pdf->SetMargins(30, 14, 30);
+        $pdf->AddPage();
+        //agregar imagen credencial
+        $pdf->Image($credencial, 2, 2, 293, 206);
+        //salto de linea
+        $pdf->cell(0, 14, utf8_decode(''), 0, 1, 'C');
+        $pdf->SetFont('Arial', 'B', 22);
+        $pdf->cell(237, 14, utf8_decode("I.E. ") . strtoupper($school->name), '', 1, 'C');
+        $pdf->ln(15);
+        $pdf->SetFont('Times', 'B', 22);
+        $pdf->cell(237, 14, utf8_decode("Otorga a:"), '', 1, 'C');
+        $pdf->SetFont('Helvetica', 'I', 27);
+        $pdf->cell(237, 14, utf8_decode($data->nameStudent), '', 1, 'C');
+
+        //multicell
+        $pdf->SetFont('Times', '', 21);
+        $pdf->cell(237, 7, utf8_decode(""), '', 1, 'C');
+        $pdf->MultiCell(0, 16, utf8_decode("La presente credencial como " . strtoupper($data->cargo) . " del Municipio Escolar para el período $fechaAnioSiguiente."), '', 'J');
+        $pdf->SetFont('Times', '', 16);
+        $pdf->cell(237, 7, utf8_decode($fecha), '', 1, 'R');
+
+        //$rutaLogo
+        $pdf->Image($rutaOnpe, 11, 22, 70);
+        $pdf->Image($rutaLogo, 239, 25, 30);
+
+        $pdf->Output('I', 'Credencial.pdf');
     }
 
     public function destroy()

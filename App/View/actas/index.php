@@ -89,7 +89,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Generar Credenciales</h5>
                         <p class="card-text">Generar Credenciales para los ganadores del Municipio Escolar y ser entregado en acto protocolar.</p>
-                        <a href="#" class="btn btn-dark">Descargar<i class="mx-2 bi bi-file-earmark-pdf"></i></a>
+                        <button data-bs-toggle="modal" data-bs-target="#credencial" class="btn btn-dark">Generar <i class="mx-2 bi bi-file-earmark-pdf"></i></button>
                     </div>
                 </div>
             </div>
@@ -194,6 +194,40 @@
         </div>
     </div>
 </div>
+<!-- Modal generar credencial-->
+<div class="modal fade" id="credencial" tabindex="-1" aria-labelledby="credencialLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="credencialLabel">Generar Credenciales</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Ingresar los nombres y apellidos completos del estudiante, el cargo que ocupa en la lista o agrupación, y la fecha como datos para la credencial.
+                <div class="mt-2">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+                        <input type="text" class="form-control" placeholder="Nombre y apellidos del estudiante" aria-describedby="basic-addon1" id="nameStudent">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon2"><i class="bi bi-award"></i></span>
+                        <input type="text" class="form-control" placeholder="Cargo que ocupa" aria-describedby="basic-addon2" id="cargo">
+                    </div>
+                    <div class="input-group mb-1">
+                        <span class="input-group-text" id="basic-addon3"><i class="bi bi-calendar2-event"></i></span>
+                        <input type="date" class="form-control" aria-describedby="basic-addon3" id="fecha">
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a href="" class="btn btn-primary" id="bottoncredencial">Generar</a>
+                <!-- <button type="button" class="btn btn-primary" id="bottonmesa">Generar</button> -->
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php include ext('layoutDash.footer') ?>
 
@@ -253,4 +287,21 @@
         }
     });
     button3.href = "<?= route('votinggroups.pdf') ?>" + '?mesa=';
+
+    //generar credencial
+    let button4 = document.getElementById('bottoncredencial');
+    button4.addEventListener('click', function() {
+        let nameStudent = document.getElementById('nameStudent').value;
+        let cargo = document.getElementById('cargo').value;
+        let fecha = document.getElementById('fecha').value;
+        if (nameStudent != '' && cargo != '' && fecha != '') {
+            //add target="_blank"
+            button4.setAttribute('target', '_blank"');
+            button4.href = "<?= route('actas.credencial') ?>" + '?nameStudent=' + nameStudent + '&cargo=' + cargo + '&fecha=' + fecha;
+        } else {
+            //elimanr target="_blank"
+            button4.removeAttribute('target');
+            button4.href = "<?= route('actas.credencial') ?>" + '?nameStudent=' + nameStudent + '&cargo=' + cargo + '&fecha=' + fecha;
+        }
+    });
 </script>
