@@ -26,15 +26,15 @@ class PdfListWall extends FPDF
 
     function Header()
     {
-        $this->Image($this->rutaLogo, 165, 10, 18);
-        $this->Image($this->rutaEscudo, 20, 10, 18);
-        $this->Image($this->rutaOnpe, 30, 20, 27);
+        $this->Image($this->rutaLogo, 175, 10, 18);
+        $this->Image($this->rutaEscudo, 15, 10, 18);
+        $this->Image($this->rutaOnpe, 24, 20, 27);
 
 
         $this->SetFont('Arial', '', 10);
         $this->cell(190, 7, utf8_decode('ELECCIÓN DEL MUNICIPIO ESCOLAR'), '', 1, 'C');
-        $this->SetFont('Arial', '', 11);
-        $this->cell(190, 7, utf8_decode('INSTITUCIÓN EDUCATIVA ' . strtoupper($this->shoolName)), '', 1, 'C');
+        $this->SetFont('Arial', '', 10);
+        $this->cell(190, 7, utf8_decode('INSTITUCIÓN EDUCATIVA ' . mb_strtoupper($this->shoolName)), '', 1, 'C');
         $this->SetFont('Arial', 'B', 18);
         $this->cell(190, 9, utf8_decode('RELACIÓN DE ELECTORES'), '', 1, 'C');
         $this->SetFont('Arial', '', 8);

@@ -153,7 +153,7 @@ class ActaController extends Controller
         $pdf->SetLineWidth(0.4);
         $pdf->SetFont('Arial', '', 10);
         $pdf->cell(190, 7, utf8_decode('ELECCIÓN DEL MUNICIPIO ESCOLAR ') . date('Y'), '', 1, 'C');
-        $pdf->cell(190, 7, utf8_decode('INSTITUCIÓN EDUCATIVA ' . strtoupper($school->name)), '', 1, 'C');
+        $pdf->cell(190, 7, utf8_decode('INSTITUCIÓN EDUCATIVA ' . mb_strtoupper($school->name)), '', 1, 'C');
         $pdf->SetFont('Arial', 'B', 15);
         $pdf->cell(190, 7, utf8_decode('ACTA ELECTORAL'), '', 1, 'C');
         $pdf->SetFont('Arial', '', 10);
@@ -293,9 +293,9 @@ class ActaController extends Controller
 
 
         //logos
-        $pdf->Image($rutaLogo, 165, 10, 18);
+        $pdf->Image($rutaLogo, 175, 10, 18);
         // $pdf->Image($rutaEscudo, 20, 10, 18);
-        $pdf->Image($rutaOnpe, 20, 10, 40);
+        $pdf->Image($rutaOnpe, 10, 10, 40);
 
         $pdf->Output('I', "Acta-$mesa->group_name.pdf");
 
@@ -335,8 +335,8 @@ class ActaController extends Controller
             $pdf->cell(0, 8, utf8_decode(''), 0, 1, 'C');
             $pdf->SetFont('Arial', 'B', 45);
             $pdf->cell(0, 10, utf8_decode('Mesa de votación'), 0, 1, 'C');
-            $pdf->SetFont('Arial', 'B', 14);
-            $pdf->cell(0, 10, utf8_decode('INSTITUCIÓN EDUCATIVA ' . strtoupper($school->name)), 0, 1, 'C');
+            $pdf->SetFont('Arial', 'B', 12);
+            $pdf->cell(0, 10, utf8_decode('INSTITUCIÓN EDUCATIVA ' . mb_strtoupper($school->name)), 0, 1, 'C');
             $pdf->SetFont('Arial', '', 14);
             $pdf->cell(0, 6, utf8_decode($school->message), 0, 1, 'C');
             $pdf->SetFont('Arial', 'B', 120);
@@ -403,8 +403,8 @@ class ActaController extends Controller
         $pdf->Image($credencial, 2, 2, 293, 206);
         //salto de linea
         $pdf->cell(0, 14, utf8_decode(''), 0, 1, 'C');
-        $pdf->SetFont('Arial', 'B', 22);
-        $pdf->cell(237, 14, utf8_decode("I.E. ") . strtoupper($school->name), '', 1, 'C');
+        $pdf->SetFont('Arial', 'B', 18);
+        $pdf->cell(237, 14, utf8_decode("I.E. " . mb_strtoupper($school->name)), '', 1, 'C');
         $pdf->ln(15);
         $pdf->SetFont('Times', 'B', 22);
         $pdf->cell(237, 14, utf8_decode("Otorga a:"), '', 1, 'C');
@@ -414,7 +414,7 @@ class ActaController extends Controller
         //multicell
         $pdf->SetFont('Times', '', 21);
         $pdf->cell(237, 7, utf8_decode(""), '', 1, 'C');
-        $pdf->MultiCell(0, 16, utf8_decode("La presente credencial como " . strtoupper($data->cargo) . " del Municipio Escolar para el período $fechaAnioSiguiente."), '', 'J');
+        $pdf->MultiCell(0, 16, utf8_decode("La presente credencial como " . mb_strtoupper($data->cargo) . " del Municipio Escolar para el período $fechaAnioSiguiente."), '', 'J');
         $pdf->SetFont('Times', '', 16);
         $pdf->cell(237, 7, utf8_decode($fecha), '', 1, 'R');
 
