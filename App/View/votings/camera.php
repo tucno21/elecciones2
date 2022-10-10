@@ -91,7 +91,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col text-center">
-                        <video id="visualizadorVideo" class="border border-3 border-primary rounded" width="60%"></video>
+                        <video id="visualizadorVideo" class="border border-3 border-primary rounded" width="40%"></video>
 
                         <input type="hidden" name="text" id="codigoQR">
 
