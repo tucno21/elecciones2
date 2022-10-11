@@ -117,6 +117,12 @@ class Students extends Model
     public static function reiniciarvotos($school_id)
     {
         $sql = "UPDATE `students` SET `candidate_id` = NULL, `date_voting` = NULL WHERE `students`.`school_id` = $school_id";
-        return self::querySimple($sql);
+
+        self::querySimple($sql);
+
+        //eliminar start_voting
+        $sql2 = "DELETE FROM `start_voting` WHERE school_id = $school_id";
+
+        return self::querySimple($sql2);
     }
 }

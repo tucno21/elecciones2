@@ -39,11 +39,14 @@ class VotingController extends Controller
 
     public function store()
     {
+        $user = session()->user();
+
         $data = $this->request()->getInput();
 
         $buscar = StartVoting::where('student_id', $data->student_id)->first();
 
         if (empty($buscar)) {
+            $data->school_id = $user->school_id;
             $result = StartVoting::create($data);
             return redirect()->route('votings.camera');
         } else {

@@ -17,7 +17,7 @@ class StartVoting extends Model
     /**
      * nombre de la columnas de la tabla
      */
-    protected static $allowedFields = ['student_id', 'date_start', 'date_end'];
+    protected static $allowedFields = ['student_id', 'school_id', 'date_start', 'date_end'];
     /**
      * obtener los datos de la tabla en 'array' u 'object'
      */
