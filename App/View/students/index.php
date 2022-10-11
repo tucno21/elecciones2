@@ -37,10 +37,10 @@
                     <i class="mx-1 bi bi-arrow-down-square"></i>
                 </button>
 
-                <a href="<?= route('students.deleteStudentSchool') ?>" class="btn btn-outline-dark btn-sm">Borrar Estudiantes</a>
+                <a href="<?= route('students.deleteStudentSchool') ?>" id="deleteStudents" class="btn btn-outline-dark btn-sm">Borrar Estudiantes</a>
                 <a href="<?= route('students.report') ?>" class="btn btn-outline-success btn-sm">Reporte</a>
                 <a href="<?= route('qr.index') ?>" target="_blanck" class="btn btn-outline-dark btn-sm">DNI QR <i class="mx-1 bi bi-qr-code"></i></a>
-                <a href="<?= route('students.reiniciarvotos') ?>" class="btn btn-outline-danger btn-sm">Reniciar Votos<i class="mx-1 bi bi-arrow-counterclockwise"></i></a>
+                <a href="<?= route('students.reiniciarvotos') ?>" id="reiniciarVoto" class="btn btn-outline-danger btn-sm">Reniciar Votos<i class="mx-1 bi bi-arrow-counterclockwise"></i></a>
             </div>
 
 
