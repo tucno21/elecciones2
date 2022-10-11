@@ -201,4 +201,13 @@ class StudentController extends Controller
 
         return redirect()->route('students.index');
     }
+
+    public function reiniciarvotos()
+    {
+        $schoolID = session()->user()->school_id;
+
+        Students::reiniciarvotos($schoolID);
+
+        return redirect()->route('students.index');
+    }
 }

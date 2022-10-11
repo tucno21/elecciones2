@@ -93,6 +93,7 @@ Route::get('/students/uploaddata', [StudentController::class, 'uploaddata'])->na
 Route::post('/students/uploaddata', [StudentController::class, 'uploaddatastore']);
 Route::get('/students/report', [StudentController::class, 'report'])->name('students.report');
 Route::get('/students/deleteStudentSchool', [StudentController::class, 'deleteStudentSchool'])->name('students.deleteStudentSchool');
+Route::get('/students/reiniciarvotos', [StudentController::class, 'reiniciarvotos'])->name('students.reiniciarvotos');
 
 //studentroles
 Route::get('/studentroles', [StudentRolesController::class, 'index'])->name('studentroles.index');

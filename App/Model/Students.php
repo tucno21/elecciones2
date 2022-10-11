@@ -113,4 +113,10 @@ class Students extends Model
         $sql = "SELECT id, fullname, dni FROM students  WHERE votinggroup_id = $votinggroup_id";
         return self::querySimple($sql);
     }
+
+    public static function reiniciarvotos($school_id)
+    {
+        $sql = "UPDATE `students` SET `candidate_id` = NULL, `date_voting` = NULL WHERE `students`.`school_id` = $school_id";
+        return self::querySimple($sql);
+    }
 }
