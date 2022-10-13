@@ -121,7 +121,6 @@ $linksScript = [
     base_url . '/assets/js/scripts.js',
     base_url . '/assets/js/sb-customizer.js',
     base_url . '/assets/js/sweetalert2.js',
-    base_url . '/assets/js/visorfoto.js',
     base_url . '/assets/plugins/flatpickr/flatpickr.js',
     base_url . '/assets/js/fecha.js',
     base_url . '/assets/js/alertas.js',

@@ -1,3 +1,8 @@
+<?php
+$linksScript2 = [
+    base_url . '/assets/js/visorfoto.js',
+];
+?>
 <?php include ext('layoutDash.head') ?>
 <main>
     <!-- Main page content-->
