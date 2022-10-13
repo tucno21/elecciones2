@@ -123,5 +123,5 @@ $linksScript = [
     base_url . '/assets/js/sweetalert2.js',
     base_url . '/assets/plugins/flatpickr/flatpickr.js',
     base_url . '/assets/js/fecha.js',
-    base_url . '/assets/js/alertas.js',
+
 ];

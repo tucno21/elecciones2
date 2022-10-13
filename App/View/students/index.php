@@ -11,6 +11,7 @@ $linksScript2 = [
     base_url . '/assets/plugins/dataTables/dataTables.responsive.min.js',
     base_url . '/assets/plugins/dataTables/responsive.bootstrap5.min.js',
     base_url . '/assets/js/datatable.js',
+    base_url . '/assets/js/alertas.js',
 ];
 ?>
 <?php include ext('layoutDash.head') ?>
