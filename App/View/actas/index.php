@@ -1,3 +1,8 @@
+<?php
+$linksScript2 = [
+    base_url . '/assets/js/actas.js',
+];
+?>
 <?php include ext('layoutDash.head') ?>
 <main>
     <!-- //mensage session flash -->
@@ -129,8 +134,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <a href="" class="btn btn-primary" id="bottonmesa">Generar</a>
-                <!-- <button type="button" class="btn btn-primary" id="bottonmesa">Generar</button> -->
+                <a href="<?= route('actas.create') . '?mesa=' ?>" class="btn btn-primary" id="bottonmesa">Generar</a>
             </div>
         </div>
     </div>
@@ -157,8 +161,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <a href="" class="btn btn-primary" id="bottonrelacionentrada">Generar</a>
-                <!-- <button type="button" class="btn btn-primary" id="bottonmesa">Generar</button> -->
+                <a href="<?= route('votinggroups.pdfWall') . '?mesa=' ?>" class="btn btn-primary" id="bottonrelacionentrada">Generar</a>
             </div>
         </div>
     </div>
@@ -185,8 +188,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <a href="" class="btn btn-primary" id="bottonrelacionMesa">Generar</a>
-                <!-- <button type="button" class="btn btn-primary" id="bottonmesa">Generar</button> -->
+                <a href="<?= route('votinggroups.pdf') . '?mesa=' ?>" class="btn btn-primary" id="bottonrelacionMesa">Generar</a>
             </div>
         </div>
     </div>
@@ -219,86 +221,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <a href="" class="btn btn-primary" id="bottoncredencial">Generar</a>
-                <!-- <button type="button" class="btn btn-primary" id="bottonmesa">Generar</button> -->
+                <a href="<?= route('actas.credencial') ?>" class="btn btn-primary" id="bottoncredencial">Generar</a>
             </div>
         </div>
     </div>
 </div>
 
 <?php include ext('layoutDash.footer') ?>
-
-<script>
-    window.onload = function(event) {
-        var toastElList = [].slice.call(document.querySelectorAll('.toast'))
-        var toastList = toastElList.map(function(toastEl) {
-            return new bootstrap.Toast(toastEl)
-        });
-        toastList.forEach(toast => toast.show());
-    }
-
-    //generar actas
-    let select = document.getElementById('inputGroupSelect01');
-    let button = document.getElementById('bottonmesa');
-    select.addEventListener('change', function() {
-        if (select.value != '') {
-            //add target="_blank"
-            button.setAttribute('target', '_blank"');
-            button.href = "<?= route('actas.create') ?>" + '?mesa=' + select.value;
-        } else {
-            button.removeAttribute('target');
-            button.href = "<?= route('actas.create') ?>" + '?mesa=' + select.value;
-        }
-    });
-    button.href = "<?= route('actas.create') ?>" + '?mesa=';
-
-
-    //generar relacion entrada
-    let select2 = document.getElementById('inputGroupSelect02');
-    let button2 = document.getElementById('bottonrelacionentrada');
-    select2.addEventListener('change', function() {
-        if (select2.value != '') {
-            //add target="_blank"
-            button2.setAttribute('target', '_blank"');
-            button2.href = "<?= route('votinggroups.pdfWall') ?>" + '?mesa=' + select2.value;
-        } else {
-            //elimanr target="_blank"
-            button2.removeAttribute('target');
-            button2.href = "<?= route('votinggroups.pdfWall') ?>" + '?mesa=' + select2.value;
-        }
-    });
-    button2.href = "<?= route('votinggroups.pdfWall') ?>" + '?mesa=';
-
-    //generar relacion mesa
-    let select3 = document.getElementById('inputGroupSelect03');
-    let button3 = document.getElementById('bottonrelacionMesa');
-    select3.addEventListener('change', function() {
-        if (select3.value != '') {
-            //add target="_blank"
-            button3.setAttribute('target', '_blank"');
-            button3.href = "<?= route('votinggroups.pdf') ?>" + '?mesa=' + select3.value;
-        } else {
-            //elimanr target="_blank"
-            button3.removeAttribute('target');
-            button3.href = "<?= route('votinggroups.pdf') ?>" + '?mesa=' + select3.value;
-        }
-    });
-    button3.href = "<?= route('votinggroups.pdf') ?>" + '?mesa=';
-
-    //generar credencial
-    let button4 = document.getElementById('bottoncredencial');
-    button4.addEventListener('click', function() {
-        let nameStudent = document.getElementById('nameStudent').value;
-        let cargo = document.getElementById('cargo').value;
-        let fecha = document.getElementById('fecha').value;
-        if (nameStudent != '' && cargo != '' && fecha != '') {
-            //add target="_blank"
-            button4.setAttribute('target', '_blank"');
-            button4.href = "<?= route('actas.credencial') ?>" + '?nameStudent=' + nameStudent + '&cargo=' + cargo + '&fecha=' + fecha;
-        } else {
-            //elimanr target="_blank"
-            button4.removeAttribute('target');
-            button4.href = "<?= route('actas.credencial') ?>" + '?nameStudent=' + nameStudent + '&cargo=' + cargo + '&fecha=' + fecha;
-        }
-    });
-</script>
