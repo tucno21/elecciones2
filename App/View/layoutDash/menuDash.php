@@ -113,8 +113,6 @@ $linksCss = [
     base_url . '/assets/css/bootstrap.css',
     base_url . '/assets/css/icon/bootstrap-icons.css',
     base_url . '/assets/plugins/flatpickr/flatpickr.min.css',
-    'https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css',
-    'https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap5.min.css',
 ];
 
 $linksScript = [
@@ -126,13 +124,7 @@ $linksScript = [
     base_url . '/assets/js/visorfoto.js',
     base_url . '/assets/plugins/flatpickr/flatpickr.js',
     base_url . '/assets/js/fecha.js',
-    'https://code.jquery.com/jquery-3.5.1.js',
-    'https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',
-    'https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js',
-    'https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js',
-    'https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap5.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js',
-    base_url . '/assets/js/datatable.js',
     base_url . '/assets/js/chart.js',
     base_url . '/assets/js/alertas.js',
 ];

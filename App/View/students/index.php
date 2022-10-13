@@ -1,3 +1,18 @@
+<?php
+$linksCss2 = [
+    base_url . '/assets/plugins/dataTables/dataTables.bootstrap5.min.css',
+    base_url . '/assets/plugins/dataTables/responsive.bootstrap5.min.css',
+];
+
+$linksScript2 = [
+    base_url . '/assets/plugins/dataTables/jquery-3.5.1.js',
+    base_url . '/assets/plugins/dataTables/jquery.dataTables.min.js',
+    base_url . '/assets/plugins/dataTables/dataTables.bootstrap5.min.js',
+    base_url . '/assets/plugins/dataTables/dataTables.responsive.min.js',
+    base_url . '/assets/plugins/dataTables/responsive.bootstrap5.min.js',
+    base_url . '/assets/js/datatable.js',
+];
+?>
 <?php include ext('layoutDash.head') ?>
 <main>
     <!-- Main page content-->
