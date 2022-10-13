@@ -108,32 +108,31 @@ $linksSidebar = [
 
 
 //ENLACES PARA CSS Y JS html
-$linkURL = base_url;
 
 $linksCss = [
-    $linkURL . '/assets/css/bootstrap.css',
-    $linkURL . '/assets/css/icon/bootstrap-icons.css',
-    $linkURL . '/assets/plugins/flatpickr/flatpickr.min.css',
+    base_url . '/assets/css/bootstrap.css',
+    base_url . '/assets/css/icon/bootstrap-icons.css',
+    base_url . '/assets/plugins/flatpickr/flatpickr.min.css',
     'https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css',
     'https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap5.min.css',
 ];
 
 $linksScript = [
-    $linkURL . '/assets/js/feather.min.js',
-    $linkURL . '/assets/js/bootstrap.bundle.js',
-    $linkURL . '/assets/js/scripts.js',
-    $linkURL . '/assets/js/sb-customizer.js',
-    $linkURL . '/assets/js/sweetalert2.js',
-    $linkURL . '/assets/js/visorfoto.js',
-    $linkURL . '/assets/plugins/flatpickr/flatpickr.js',
-    $linkURL . '/assets/js/fecha.js',
+    base_url . '/assets/js/feather.min.js',
+    base_url . '/assets/js/bootstrap.bundle.js',
+    base_url . '/assets/js/scripts.js',
+    base_url . '/assets/js/sb-customizer.js',
+    base_url . '/assets/js/sweetalert2.js',
+    base_url . '/assets/js/visorfoto.js',
+    base_url . '/assets/plugins/flatpickr/flatpickr.js',
+    base_url . '/assets/js/fecha.js',
     'https://code.jquery.com/jquery-3.5.1.js',
     'https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',
     'https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js',
     'https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js',
     'https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap5.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js',
-    $linkURL . '/assets/js/datatable.js',
-    $linkURL . '/assets/js/chart.js',
-    $linkURL . '/assets/js/alertas.js',
+    base_url . '/assets/js/datatable.js',
+    base_url . '/assets/js/chart.js',
+    base_url . '/assets/js/alertas.js',
 ];
