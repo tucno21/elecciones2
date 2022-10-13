@@ -1,3 +1,9 @@
+<?php
+$linksScript2 = [
+    base_url . '/assets/plugins/chart/chart.min.js',
+    base_url . '/assets/js/chart.js',
+];
+?>
 <?php include ext('layoutDash.head') ?>
 <main>
     <header class="py-2 mb-4 color-dashboard">

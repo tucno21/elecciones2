@@ -124,7 +124,5 @@ $linksScript = [
     base_url . '/assets/js/visorfoto.js',
     base_url . '/assets/plugins/flatpickr/flatpickr.js',
     base_url . '/assets/js/fecha.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js',
-    base_url . '/assets/js/chart.js',
     base_url . '/assets/js/alertas.js',
 ];
