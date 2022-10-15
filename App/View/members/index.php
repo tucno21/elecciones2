@@ -2,7 +2,7 @@
 <main>
     <!-- Main page content-->
     <div class="container-xl px-4">
-        <h2 class="mt-2 mb-0">Panel de Roles Pare Estudiantes</h2>
+        <h2 class="mt-2 mb-0">Panel Miembros de Mesa</h2>
         <hr class="mt-0 mb-4" />
 
 

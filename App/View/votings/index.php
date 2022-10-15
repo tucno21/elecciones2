@@ -60,7 +60,7 @@
                     </div>
 
                     <div class=" col-3 text-start my-auto">
-                        <img src="<?= base_url('/assets/img/escudo.png') ?>" class="png-shadow" style="width:4rem;" alt="...">
+                        <img src="<?= base_url('/assets/img/escudo.png') ?>" class="png-shadow expand" style="width:4rem;" alt="...">
                     </div>
                 </div>
             </div>
@@ -78,8 +78,8 @@
                 <div class="row px-6">
                     <div class="col-2"></div>
                     <div class="col-8">
-                        <p class="fs-6">puedes activar la mesa de votación para todos los electores que estan en el
-                            padron electoral que esta a tu cargo</p>
+                        <p class="fs-6">Puedes activar la mesa de votación para todos los electores que estan en el
+                            padrón electoral</p>
                     </div>
                     <div class="col-2"></div>
                 </div>
@@ -109,6 +109,17 @@
     <script src="<?= base_url('/assets/js/sweetalert2.js') ?>"></script>
 
     <script>
+        let expand = document.querySelector('.expand');
+        //ejecutar f11 automaticamente
+        expand.addEventListener('click', () => {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                document.documentElement.requestFullscreen();
+            }
+        });
+
+
         let datatime = new Date();
         //solo hora am/pm
         let hora = datatime.toLocaleTimeString('en-US', {
