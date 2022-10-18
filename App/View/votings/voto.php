@@ -97,6 +97,12 @@
             background-color: <?= $school->color ?>90;
             border: 1px solid <?= $school->color ?>;
         }
+
+        .centermain {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -105,11 +111,11 @@
         <div class="container-fluid ">
 
             <div class="row ">
-                <div class="col-3 text-end my-auto">
+                <div class="col-sm-3 text-center text-sm-end my-auto">
                     <img src="<?= base_url('/assets/img/' . $school->photo) ?>" class="png-shadow" style="width:4rem;" alt="...">
                 </div>
 
-                <div class="col-6 text-center my-auto py-2">
+                <div class="col-sm-6 text-center my-auto py-2">
                     <h1 class="fs-5 text-shadow">
                         <i class="bi bi-qr-code-scan"></i>
                         VOTO ELECTRÓNICO <?= date('Y'); ?>
@@ -118,62 +124,64 @@
                     <h2 class="fs-3 text-uppercase fw-bold text-shadow">I.E. <?= $school->name; ?></h2>
                 </div>
 
-                <div class=" col-3 text-start my-auto">
+                <div class=" col-sm-3 text-center text-sm-start my-auto">
                     <img src="<?= base_url('/assets/img/escudo.png') ?>" class="png-shadow expand" style="width:4rem;" alt="...">
                 </div>
             </div>
         </div>
     </header>
 
-    <main class="mb-2">
-        <div class="container text-center mt-2 p-4">
-            <h2>Bienvenido(a): <span class="fw-bold"><?= session()->get('student')->fullname ?></span></h2>
-            <h4>DNI: <span class="fw-bold"><?= session()->get('student')->dni ?></span></h4>
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-8">
-                    <p class="fs-6 m-0">Elige al alcalde o alcaldeza escolar para el siguiente año, tu voto vale mucho y
-                        vota a conciencia</p>
-                </div>
-                <div class="col-2"></div>
-            </div>
-        </div>
-
-        <div class="container p-3 p-md-0">
-            <form method="POST" action="<?= route('votings.candidate') ?>" id="formVotar">
-                <?= csrf() ?>
-                <?php foreach ($candidatos as $cand) : ?>
-
-                    <div class="row">
-                        <!-- nombre del grupo -->
-                        <div class="border col-8 border-secondary d-grid p-0">
-                            <input type="radio" class="btn-check" name="candidate_id" id="<?= $cand->id; ?>" autocomplete="off" value="<?= $cand->id; ?>">
-                            <label class="btn btn-outline-secondary text-uppercase text-centerXY" for="<?= $cand->id; ?>">
-                                <?= $cand->group_name; ?>
-                            </label>
-                        </div>
-                        <!-- logo del candidato -->
-                        <div class="border col-2 border-secondary d-flex justify-content-center ">
-                            <label for="<?= $cand->id; ?>">
-                                <img class="p-1" style="width:4.5rem;" src="<?= base_url('/assets/img/' . $cand->logo) ?>" alt="foto">
-                            </label>
-                        </div>
-                        <!-- foto del candidato -->
-                        <div class="border col-2 border-secondary d-flex justify-content-center ">
-                            <label for="<?= $cand->id; ?>">
-                                <img class="p-1" style="width:4.5rem;" src="<?= base_url('/assets/img/' . $cand->photo) ?>" alt="foto">
-                            </label>
-                        </div>
+    <main class="mb-2 centermain">
+        <div class="">
+            <div class="container text-center mt-2 p-4">
+                <h2>Bienvenido(a): <span class="fw-bold"><?= session()->get('student')->fullname ?></span></h2>
+                <h4>DNI: <span class="fw-bold"><?= session()->get('student')->dni ?></span></h4>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <p class="fs-6 m-0">Elige al alcalde o alcaldeza escolar para el siguiente año, tu voto vale mucho y
+                            vota a conciencia</p>
                     </div>
-
-                <?php endforeach; ?>
-                <input type="hidden" name="id" value="<?= session()->get('student')->id ?>">
-
-
-                <div class="mt-3 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-dark color-bot fs-5 px-6">Votar</button>
+                    <div class="col-2"></div>
                 </div>
-            </form>
+            </div>
+
+            <div class="container p-3 p-md-0">
+                <form method="POST" action="<?= route('votings.candidate') ?>" id="formVotar">
+                    <?= csrf() ?>
+                    <?php foreach ($candidatos as $cand) : ?>
+
+                        <div class="row">
+                            <!-- nombre del grupo -->
+                            <div class="border col-8 border-secondary d-grid p-0">
+                                <input type="radio" class="btn-check" name="candidate_id" id="<?= $cand->id; ?>" autocomplete="off" value="<?= $cand->id; ?>">
+                                <label class="btn btn-outline-secondary text-uppercase text-centerXY" for="<?= $cand->id; ?>">
+                                    <?= $cand->group_name; ?>
+                                </label>
+                            </div>
+                            <!-- logo del candidato -->
+                            <div class="border col-2 border-secondary d-flex justify-content-center ">
+                                <label for="<?= $cand->id; ?>">
+                                    <img class="p-1" style="width:4.5rem;" src="<?= base_url('/assets/img/' . $cand->logo) ?>" alt="foto">
+                                </label>
+                            </div>
+                            <!-- foto del candidato -->
+                            <div class="border col-2 border-secondary d-flex justify-content-center ">
+                                <label for="<?= $cand->id; ?>">
+                                    <img class="p-1" style="width:4.5rem;" src="<?= base_url('/assets/img/' . $cand->photo) ?>" alt="foto">
+                                </label>
+                            </div>
+                        </div>
+
+                    <?php endforeach; ?>
+                    <input type="hidden" name="id" value="<?= session()->get('student')->id ?>">
+
+
+                    <div class="mt-3 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-dark color-bot fs-5 px-6">Votar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </main>
 

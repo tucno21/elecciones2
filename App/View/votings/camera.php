@@ -56,19 +56,24 @@
         .color-texto-muted {
             color: <?= $school->colorletter ?>80;
         }
+
+        .centermain {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
 <body class="grid-elecciones bg-fondo">
     <header class="bg-header">
         <div class="container-fluid ">
-
             <div class="row ">
-                <div class="col-3 text-end my-auto">
+                <div class="col-sm-3 text-center text-sm-end my-auto">
                     <img src="<?= base_url('/assets/img/' . $school->photo) ?>" class="png-shadow" style="width:4rem;" alt="...">
                 </div>
 
-                <div class="col-6 text-center my-auto py-2">
+                <div class="col-sm-6 text-center my-auto py-2">
                     <h1 class="fs-5 text-shadow">
                         <i class="bi bi-qr-code-scan"></i>
                         VOTO ELECTRÓNICO <?= date('Y'); ?>
@@ -77,30 +82,32 @@
                     <h2 class="fs-3 text-uppercase fw-bold text-shadow">I.E. <?= $school->name; ?></h2>
                 </div>
 
-                <div class=" col-3 text-start my-auto">
+                <div class=" col-sm-3 text-center text-sm-start my-auto">
                     <img src="<?= base_url('/assets/img/escudo.png') ?>" class="png-shadow expand" style="width:4rem;" alt="...">
                 </div>
             </div>
         </div>
     </header>
 
-    <main class="mb-2">
-        <div class="container text-center mt-2">
-            <h2>Mesa de Votación: <span class="fw-bold"><?= session()->user()->group_name ?></span></h2>
+    <main class="mb-2 centermain">
+        <div class="">
+            <div class="container text-center mt-2">
+                <h2>Mesa de Votación: <span class="fw-bold"><?= session()->user()->group_name ?></span></h2>
 
-            <div class="row">
-                <p class="p-0 fw-bold"><?= $school->message; ?></p>
+                <div class="row">
+                    <p class="p-0 fw-bold"><?= $school->message; ?></p>
+                </div>
             </div>
-        </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col text-center">
-                    <video id="visualizadorVideo" class="border border-3 border-primary rounded" width="35%"></video>
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <video id="visualizadorVideo" class="border border-3 border-primary rounded" width="35%"></video>
 
-                    <input type="hidden" name="text" id="codigoQR">
+                        <input type="hidden" name="text" id="codigoQR">
 
-                    <p class="p-0">Acerca tu identificacion QR a la camara</p>
+                        <p class="p-0">Acerca tu identificacion QR a la camara</p>
+                    </div>
                 </div>
             </div>
         </div>
