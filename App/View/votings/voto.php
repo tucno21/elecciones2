@@ -137,12 +137,9 @@
                 <h2>Bienvenido(a): <span class="fw-bold"><?= session()->get('student')->fullname ?></span></h2>
                 <h4>DNI: <span class="fw-bold"><?= session()->get('student')->dni ?></span></h4>
                 <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-8">
-                        <p class="fs-6 m-0">Elige al alcalde o alcaldeza escolar para el siguiente año, tu voto vale mucho y
-                            vota a conciencia</p>
-                    </div>
-                    <div class="col-2"></div>
+
+                    <p class="fs-6 m-0 px-2">Elige al alcalde o alcaldeza Escolar para el siguiente año, tu voto, el ejercicio del porder elegir a quien te represente</p>
+
                 </div>
             </div>
 
