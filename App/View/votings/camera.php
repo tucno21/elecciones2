@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="<?= base_url('/assets/css/icon/bootstrap-icons.css') ?>">
 
     <style>
+        .grid-elecciones {
+            display: grid;
+            min-height: 100vh;
+            grid-template-rows: auto 1fr auto;
+        }
+
         .bg-fondo {
             background-color: <?= $school->color ?>25;
         }
@@ -53,60 +59,58 @@
     </style>
 </head>
 
-<body class="d-flex h-100">
-    <div class="d-flex flex-column w-100 bg-fondo">
-        <header class="bg-header">
-            <div class="container-fluid ">
+<body class="grid-elecciones bg-fondo">
+    <header class="bg-header">
+        <div class="container-fluid ">
 
-                <div class="row ">
-                    <div class="col-3 text-end my-auto">
-                        <img src="<?= base_url('/assets/img/' . $school->photo) ?>" class="png-shadow" style="width:4rem;" alt="...">
-                    </div>
+            <div class="row ">
+                <div class="col-3 text-end my-auto">
+                    <img src="<?= base_url('/assets/img/' . $school->photo) ?>" class="png-shadow" style="width:4rem;" alt="...">
+                </div>
 
-                    <div class="col-6 text-center my-auto py-2">
-                        <h1 class="fs-5 text-shadow">
-                            <i class="bi bi-qr-code-scan"></i>
-                            VOTO ELECTRÓNICO <?= date('Y'); ?>
-                            <i class="bi bi-qr-code-scan"></i>
-                        </h1>
-                        <h2 class="fs-3 text-uppercase fw-bold text-shadow">I.E. <?= $school->name; ?></h2>
-                    </div>
+                <div class="col-6 text-center my-auto py-2">
+                    <h1 class="fs-5 text-shadow">
+                        <i class="bi bi-qr-code-scan"></i>
+                        VOTO ELECTRÓNICO <?= date('Y'); ?>
+                        <i class="bi bi-qr-code-scan"></i>
+                    </h1>
+                    <h2 class="fs-3 text-uppercase fw-bold text-shadow">I.E. <?= $school->name; ?></h2>
+                </div>
 
-                    <div class=" col-3 text-start my-auto">
-                        <img src="<?= base_url('/assets/img/escudo.png') ?>" class="png-shadow expand" style="width:4rem;" alt="...">
-                    </div>
+                <div class=" col-3 text-start my-auto">
+                    <img src="<?= base_url('/assets/img/escudo.png') ?>" class="png-shadow expand" style="width:4rem;" alt="...">
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <main class="mb-2">
-            <div class="container text-center mt-2">
-                <h2>Mesa de Votación: <span class="fw-bold"><?= session()->user()->group_name ?></span></h2>
+    <main class="mb-2">
+        <div class="container text-center mt-2">
+            <h2>Mesa de Votación: <span class="fw-bold"><?= session()->user()->group_name ?></span></h2>
 
-                <div class="row">
-                    <p class="p-0 fw-bold"><?= $school->message; ?></p>
+            <div class="row">
+                <p class="p-0 fw-bold"><?= $school->message; ?></p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <video id="visualizadorVideo" class="border border-3 border-primary rounded" width="35%"></video>
+
+                    <input type="hidden" name="text" id="codigoQR">
+
+                    <p class="p-0">Acerca tu identificacion QR a la camara</p>
                 </div>
             </div>
+        </div>
+    </main>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col text-center">
-                        <video id="visualizadorVideo" class="border border-3 border-primary rounded" width="40%"></video>
-
-                        <input type="hidden" name="text" id="codigoQR">
-
-                        <p class="p-0">Acerca tu identificacion QR a la camara</p>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <footer class="mt-auto bg-footer">
-            <div class="container text-center p-2">
-                <p class="color-texto-muted m-0">Dev: Ideasweb21 © 2022 - Todos los derechos reservados</p>
-            </div>
-        </footer>
-    </div>
+    <footer class="bg-footer">
+        <div class="container text-center p-2">
+            <p class="color-texto-muted m-0">Dev: Ideasweb21 © 2022 - Todos los derechos reservados</p>
+        </div>
+    </footer>
 
     <script>
 

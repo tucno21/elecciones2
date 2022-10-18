@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="<?= base_url('/assets/css/icon/bootstrap-icons.css') ?>">
 
     <style>
+        .grid-elecciones {
+            display: grid;
+            min-height: 100vh;
+            grid-template-rows: auto 1fr auto;
+        }
+
         .bg-fondo {
             background-color: <?= $school->color ?>25;
         }
@@ -94,90 +100,88 @@
     </style>
 </head>
 
-<body class="d-flex h-100">
-    <div class="d-flex flex-column w-100 bg-fondo">
-        <header class="bg-header">
-            <div class="container-fluid ">
+<body class="grid-elecciones bg-fondo">
+    <header class="bg-header">
+        <div class="container-fluid ">
 
-                <div class="row ">
-                    <div class="col-3 text-end my-auto">
-                        <img src="<?= base_url('/assets/img/' . $school->photo) ?>" class="png-shadow" style="width:4rem;" alt="...">
-                    </div>
+            <div class="row ">
+                <div class="col-3 text-end my-auto">
+                    <img src="<?= base_url('/assets/img/' . $school->photo) ?>" class="png-shadow" style="width:4rem;" alt="...">
+                </div>
 
-                    <div class="col-6 text-center my-auto py-2">
-                        <h1 class="fs-5 text-shadow">
-                            <i class="bi bi-qr-code-scan"></i>
-                            VOTO ELECTRÓNICO <?= date('Y'); ?>
-                            <i class="bi bi-qr-code-scan"></i>
-                        </h1>
-                        <h2 class="fs-3 text-uppercase fw-bold text-shadow">I.E. <?= $school->name; ?></h2>
-                    </div>
+                <div class="col-6 text-center my-auto py-2">
+                    <h1 class="fs-5 text-shadow">
+                        <i class="bi bi-qr-code-scan"></i>
+                        VOTO ELECTRÓNICO <?= date('Y'); ?>
+                        <i class="bi bi-qr-code-scan"></i>
+                    </h1>
+                    <h2 class="fs-3 text-uppercase fw-bold text-shadow">I.E. <?= $school->name; ?></h2>
+                </div>
 
-                    <div class=" col-3 text-start my-auto">
-                        <img src="<?= base_url('/assets/img/escudo.png') ?>" class="png-shadow expand" style="width:4rem;" alt="...">
-                    </div>
+                <div class=" col-3 text-start my-auto">
+                    <img src="<?= base_url('/assets/img/escudo.png') ?>" class="png-shadow expand" style="width:4rem;" alt="...">
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <main class="mb-2">
-            <div class="container text-center mt-2 p-4">
-                <h2>Bienvenido(a): <span class="fw-bold"><?= session()->get('student')->fullname ?></span></h2>
-                <h4>DNI: <span class="fw-bold"><?= session()->get('student')->dni ?></span></h4>
-                <div class="row px-6">
-                    <div class="col-2"></div>
-                    <div class="col-8">
-                        <p class="fs-6">Elige al alcalde o alcaldeza escolar para el siguiente año, tu voto vale mucho y
-                            vota a conciencia</p>
-                    </div>
-                    <div class="col-2"></div>
+    <main class="mb-2">
+        <div class="container text-center mt-2 p-4">
+            <h2>Bienvenido(a): <span class="fw-bold"><?= session()->get('student')->fullname ?></span></h2>
+            <h4>DNI: <span class="fw-bold"><?= session()->get('student')->dni ?></span></h4>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <p class="fs-6 m-0">Elige al alcalde o alcaldeza escolar para el siguiente año, tu voto vale mucho y
+                        vota a conciencia</p>
                 </div>
+                <div class="col-2"></div>
             </div>
+        </div>
 
-            <div class="container">
-                <form method="POST" action="<?= route('votings.candidate') ?>" id="formVotar">
-                    <?= csrf() ?>
-                    <?php foreach ($candidatos as $cand) : ?>
+        <div class="container p-3 p-md-0">
+            <form method="POST" action="<?= route('votings.candidate') ?>" id="formVotar">
+                <?= csrf() ?>
+                <?php foreach ($candidatos as $cand) : ?>
 
-                        <div class="row">
-                            <!-- nombre del grupo -->
-                            <div class="border col-8 border-secondary d-grid p-0">
-                                <input type="radio" class="btn-check" name="candidate_id" id="<?= $cand->id; ?>" autocomplete="off" value="<?= $cand->id; ?>">
-                                <label class="btn btn-outline-secondary text-uppercase text-centerXY" for="<?= $cand->id; ?>">
-                                    <?= $cand->group_name; ?>
-                                </label>
-                            </div>
-                            <!-- logo del candidato -->
-                            <div class="border col-2 border-secondary d-flex justify-content-center ">
-                                <label for="<?= $cand->id; ?>">
-                                    <img class="p-1" style="width:4.5rem;" src="<?= base_url('/assets/img/' . $cand->logo) ?>" alt="foto">
-                                </label>
-                            </div>
-                            <!-- foto del candidato -->
-                            <div class="border col-2 border-secondary d-flex justify-content-center ">
-                                <label for="<?= $cand->id; ?>">
-                                    <img class="p-1" style="width:4.5rem;" src="<?= base_url('/assets/img/' . $cand->photo) ?>" alt="foto">
-                                </label>
-                            </div>
+                    <div class="row">
+                        <!-- nombre del grupo -->
+                        <div class="border col-8 border-secondary d-grid p-0">
+                            <input type="radio" class="btn-check" name="candidate_id" id="<?= $cand->id; ?>" autocomplete="off" value="<?= $cand->id; ?>">
+                            <label class="btn btn-outline-secondary text-uppercase text-centerXY" for="<?= $cand->id; ?>">
+                                <?= $cand->group_name; ?>
+                            </label>
                         </div>
-
-                    <?php endforeach; ?>
-                    <input type="hidden" name="id" value="<?= session()->get('student')->id ?>">
-
-
-                    <div class="mt-3 d-flex justify-content-center">
-                        <button type="submit" class="btn btn-dark color-bot fs-5 px-6">Votar</button>
+                        <!-- logo del candidato -->
+                        <div class="border col-2 border-secondary d-flex justify-content-center ">
+                            <label for="<?= $cand->id; ?>">
+                                <img class="p-1" style="width:4.5rem;" src="<?= base_url('/assets/img/' . $cand->logo) ?>" alt="foto">
+                            </label>
+                        </div>
+                        <!-- foto del candidato -->
+                        <div class="border col-2 border-secondary d-flex justify-content-center ">
+                            <label for="<?= $cand->id; ?>">
+                                <img class="p-1" style="width:4.5rem;" src="<?= base_url('/assets/img/' . $cand->photo) ?>" alt="foto">
+                            </label>
+                        </div>
                     </div>
-                </form>
-            </div>
-        </main>
 
-        <footer class="mt-auto bg-footer">
-            <div class="container text-center p-2">
-                <p class="color-texto-muted m-0">Dev: Ideasweb21 © 2022 - Todos los derechos reservados</p>
-            </div>
-        </footer>
-    </div>
+                <?php endforeach; ?>
+                <input type="hidden" name="id" value="<?= session()->get('student')->id ?>">
+
+
+                <div class="mt-3 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-dark color-bot fs-5 px-6">Votar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-footer mt-2">
+        <div class="container text-center p-2">
+            <p class="color-texto-muted m-0">Dev: Ideasweb21 © 2022 - Todos los derechos reservados</p>
+        </div>
+    </footer>
 
     <script src="<?= base_url ?>/assets/plugins/bootstrap/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
