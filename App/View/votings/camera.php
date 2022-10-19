@@ -160,6 +160,9 @@
 
         // captura y envia el codigo
         scanner.addListener('scan', async function(c) {
+            //agregar sonido
+            let audio = new Audio('<?= base_url('/assets/sound/beep.mp3') ?>');
+            audio.play();
             // url buscar el codigo
             const url = "<?= route('votings.search') . '?codigo=' ?>" + c;
 
